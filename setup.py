@@ -10,11 +10,11 @@ AUTHOR_EMAIL = "zheanrobbyganituen@gmail.com"
 URL = "https://github.com/Z1aaan/Epytoml"
 
 LICENSE = "MIT License"
-DESCRIPTION = "NAME"
+DESCRIPTION = "A python package that converts plain text into a specified markup language using python."
 LONG_DESCRIPTION = (HERE / "README.md").read_text()
 LONG_DESC_TYPE = "text/markdown"
 
-INSTALL_REQUIRES = []
+INSTALL_REQUIRES = ['pdfkit']
 
 setup(
     name=PACKAGE_NAME,
