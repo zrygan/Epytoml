@@ -129,7 +129,10 @@ def makeLink(headerNumber, text):
 
 def toc(size=None):
     # make a table of contents
-
+    
+    headerValStart = "<h1>"
+    headerValEnd = "</h1>"
+    
     # make size=none to make it default to the header 1 size, unless specified
     if size is None or size == 1:
         headerValStart = "<h1>"
@@ -150,7 +153,7 @@ def toc(size=None):
             headerValEnd = "</h1>"
 
     global epyCONTENT_toc
-
+    
     tocTitle = headerValStart + "<b>Table of Contents</b>" + headerValEnd + "\n"
 
     epyCONTENT_toc += tocTitle
