@@ -1,5 +1,6 @@
 from Notaker import Notaker as ntk
 import os.path as path
+import pdfkit
 
 
 def folderPath(initialDirectory):
@@ -31,6 +32,8 @@ def ntkBake(directory=None):
     if directory is None:
         with open(fileNameType, "w") as f:
             f.write(content)
+        fileNameTypePDF = fileName + ".pdf"
+        pdfkit.from_file(fileNameType, fileNameTypePDF)
     else:
         # if the user gave a directory, use this
         finalDirectory = folderPath(directory)
