@@ -1,3 +1,4 @@
-from Notaker import Notaker
+from Notaker import Notaker as ntk
 
-Notaker.shortcut("zhean")
+ntk.ntkGen("test", "test")
+ntk.ntkShut()
