@@ -160,3 +160,53 @@ def toc(size=None):
         linkTitle = links[header]
         linkTitle += "\n"
         epyCONTENT_toc += linkTitle
+
+
+def text(text, emphasis=None):
+    # write text to the main body of the Notaker file
+    # text does not insert a <br> at the end of the text
+    emphasis = emphasis.lower()
+    if emphasis is None:
+        # default text when there are no emphasis tags specified
+        ntkP = "<p>" + text + "</p>\n"
+    else:
+        if emphasis == "b":
+            # bold text
+            ntkP = "<p><b>" + text + "</b></p>\n"
+        elif emphasis == "i":
+            # italic text
+            ntkP = "<p><i>" + text + "</i></p>\n"
+        elif emphasis == "u":
+            # underline text
+            ntkP = "<p><u>" + text + "</u></p>\n"
+        else:
+            # if input not found then set to default
+            ntkP = "<p>" + text + "</p>\n"
+
+    global epyCONTENT_main
+    epyCONTENT_main += ntkP
+
+
+def textL(text, emphasis=None):
+    # write text to the main body of the Notaker file
+    # textL inserts a <br> at the end of the text
+
+    if emphasis is None:
+        # default text when there are no emphasis tags specified
+        ntkP = "<p>" + text + "</p><br>\n"
+    else:
+        if emphasis == "b":
+            # bold text
+            ntkP = "<p><b>" + text + "</b></p><br>\n"
+        elif emphasis == "i":
+            # italic text
+            ntkP = "<p><i>" + text + "</i></p><br>\n"
+        elif emphasis == "u":
+            # underline text
+            ntkP = "<p><u>" + text + "</u></p><br>\n"
+        else:
+            # if input not found then set to default
+            ntkP = "<p>" + text + "</p><br>\n"
+
+    global epyCONTENT_main
+    epyCONTENT_main += ntkP
