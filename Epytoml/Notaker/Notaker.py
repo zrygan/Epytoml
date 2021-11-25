@@ -1,14 +1,14 @@
 # Epytomil, Notaker
 # Created by: Zhean Ganituen
 
+from datetime import date as dt
+
 # TODO: Add Author, Date Created in ntkGen after ntkHeader
 
 # REMEMBER: Change version number in ntkGen() function
 # REMEMBER: To add a '\n' at the end of each line that is appended in the ntkTitleHead
 
 # variable that stores all of the content of the Notaker file being created
-
-
 ntk_ContWhole = ""
 
 # these variables are the variables for the Notaker file being created
@@ -17,16 +17,25 @@ ntk_ContGen = ""
 ntk_ContShut = ""
 ntk_ContToc = ""
 ntk_ContMain = ""
+ntk_ContMakeTitle = ""
 
 # variable that counts how many header 1s are created
 ntk_headCount = 1
-
 
 # variable that collects all the headerCounts and their corresponding text in a key
 ntk_heads = {}
 
 # variable that collects all the ntk_links of the headers, to be used in the table of contents
 ntk_links = {}
+
+# variable that stores the author name/s
+# this variable must have its key as the author surname and the value as the author name/s
+# sample: {1: ["FirstName_1", "Surname_1"], 2: ["FirstName_2", "Surname_2"] ... }
+ntk_authors = {}
+
+
+# variable that stores the creation date of the file
+ntk_date = {"month": "", "day": "", "year": ""}
 
 
 def ntkGen(fileName):
@@ -74,6 +83,7 @@ def ntkShut():
     # </html>
 
     global ntk_ContGen
+    global ntk_ContMakeTitle
     global ntk_ContToc
     global ntk_ContMain
     global ntk_ContShut
@@ -86,6 +96,8 @@ def ntkShut():
     global ntk_ContWhole
     ntk_ContWhole += (
         ntk_ContGen
+        + "\n"
+        + ntk_ContMakeTitle
         + "\n"
         + ntk_ContToc
         + "\n"
@@ -211,3 +223,52 @@ def textL(content, emphasis=None):
 
     global ntk_ContMain
     ntk_ContMain += ntkP
+
+
+def makeTitle(authorNames, date=None, dateFormat=None):
+    global ntk_ContMakeTitle
+
+    #code for name formatting
+
+    authorFirstName = {}
+    authorSurname = {}
+
+    for author in range(1, len(authorNames) + 1):
+        # first name of author
+        # save in authorFirstName dictionary
+        authorFirstName[author] = authorNames[author][0]
+
+        # surname of author
+        # save in authorSurname dictionary
+        authorSurname[author] = authorNames[author][1]
+
+    titleDate = ""
+
+    if date is None:
+        # if no date is specified, get the current month and year
+        titleYear = dt.today().year
+        titleYear = str(titleYear)
+
+        titleMonth = dt.today().month
+        titleMonth = str(titleMonth)
+
+        # convert month to month name
+        titleMonth = monthNames[titleMonth - 1]
+
+    else:
+        # if a date is specified, use it.
+        titleYear = date["year"]
+
+        titleDay = date["day"]
+
+        titleMonth = date["month"]
+
+    # only allow date formatting if dates (day, month, and year) is specified
+    if date is not None:
+        if dateFormat is None:
+            # if no date format is specified, set the date format to the default (Month YYYY)
+            titleDate = titleYear + titleMonth
+        elif dateFormat == "1":
+            # dateFormat 1 is Month DD, YYYY
+            titleDate = titleMonth + titleDay + ", " + titleYear
+        elif dateFormat == "2":
