@@ -106,6 +106,12 @@ def ntkShut():
     )
 
 
+def nl(value):
+    global ntk_ContMain
+    for i in range(value):
+        ntk_ContMain += "<br> \n"
+
+
 def h(content):
     # Make a header with the given text
     ntkHeader1 = "<h1>" + content + "</h1>\n"
@@ -143,8 +149,8 @@ def h5(content):
     ntkHeader5 = "<h5>" + content + "</h5>\n"
     global ntk_ContMain
     ntk_ContMain += ntkHeader5
-    
-    
+
+
 def h6(content):
     ntkHeader6 = "<h6>" + content + "</h6>\n"
     global ntk_ContMain
