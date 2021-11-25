@@ -3,8 +3,6 @@
 
 from datetime import date as dt
 
-# TODO: Add Author, Date Created in ntkGen after ntkHeader
-
 # REMEMBER: Change version number in ntkGen() function
 # REMEMBER: To add a '\n' at the end of each line that is appended in the ntkTitleHead
 
@@ -321,5 +319,4 @@ def makeTitle(authorNames, date=None, dateFormat=None):
 
     titleDate = "<h2><b>" + titleDate + "</b></h2>\n"
 
-    ntk_ContMakeTitle = titleAuthor + "<br>" + titleDate
-    
+    ntk_ContMakeTitle = titleAuthor + titleDate
