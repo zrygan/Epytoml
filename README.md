@@ -11,9 +11,9 @@ Epytomil (The Epitome of Python to Markup Language), is a python package that co
 <h5><details><summary><b>Basic Info<b></summary>
 Created by: Zhean Ganituen <a href="https://github.com/Z1aaan">Z1aaan</a>
 
-Last Updated: November 24, 2021
+Last Updated: November , 2021
 
-Latest Release Version: 1.0.1
+Latest Release Version: 1.0.12
 
 GitHub Repo: <a href="https://github.com/Z1aaan/Epytoml">GitHub Repository</a>
 
@@ -54,7 +54,7 @@ System requirements:
 
 - Then begin your `.py` file with `Notaker.ntkGen("Foo")`
 
-- And remember to end your `.py` file with `Notaker.ntkShut("Bar")` and `EpyBake.ntkBake("Baz", Notaker.ntk_ContWhole)`
+- And remember to end your `.py` file with `Notaker.ntkShut("Bar")` and `EpyBake.ntkBake("Foo", Notaker.ntk_ContWhole)`
   > ## `Sample File`
   >
   > ```
