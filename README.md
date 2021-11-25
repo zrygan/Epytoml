@@ -54,7 +54,7 @@ System requirements:
 
 - Then begin your `.py` file with `Notaker.ntkGen("Foo")`
 
-- And remember to end your `.py` file with `Notaker.ntkShut("Bar")` and `EpyBake.ntkBake("Baz", Notaker.epyCONTENT)`
+- And remember to end your `.py` file with `Notaker.ntkShut("Bar")` and `EpyBake.ntkBake("Baz", Notaker.ntk_ContWhole)`
   > ## `Sample File`
   >
   > ```
@@ -66,7 +66,7 @@ System requirements:
   > >>
   > >>
   > Notaker.ntkShut("Bar")
-  > EpyBake.ntkBake("Baz", Notaker.epyCONTENT)
+  > EpyBake.ntkBake("Baz", Notaker.ntk_ContWhole)
   > ```
 
 ## License

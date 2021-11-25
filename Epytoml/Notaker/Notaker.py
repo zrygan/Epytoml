@@ -9,32 +9,32 @@
 # variable that stores all of the content of the Notaker file being created
 
 
-epyCONTENT = ""
+ntk_ContWhole = ""
 
 # these variables are the variables for the Notaker file being created
 # _toc and _main are separated because _toc has to come first but the headers must be complete once it is generated
-epyCONTENT_ntkGen = ""
-epyCONTENT_ntkShut = ""
-epyCONTENT_toc = ""
-epyCONTENT_main = ""
+ntk_ContGen = ""
+ntk_ContShut = ""
+ntk_ContToc = ""
+ntk_ContMain = ""
 
 # variable that counts how many header 1s are created
-headCount = 1
+ntk_headCount = 1
 
 
 # variable that collects all the headerCounts and their corresponding text in a key
-heads = {}
+ntk_heads = {}
 
-# variable that collects all the links of the headers, to be used in the table of contents
-links = {}
+# variable that collects all the ntk_links of the headers, to be used in the table of contents
+ntk_links = {}
 
 
 def ntkGen(fileName):
     # ntkFile is the output of the Notaker, append all user inputs here.
-    global finalFileName
-    global NotakerName
-    NotakerName = fileName
-    finalFileName = fileName + ".html"
+    global ntk_file
+    global ntk_fileName
+    ntk_fileName = fileName
+    ntk_file = fileName + ".html"
 
     #'<title>fileName</title>\n'
     ntkTitle = "<title>" + fileName + "</title>\n"
@@ -51,21 +51,21 @@ def ntkGen(fileName):
     # </head>
     # <body>
 
-    global epyCONTENT_ntkGen
-    epyCONTENT_ntkGen += "<!DOCTYPE html>\n"
-    epyCONTENT_ntkGen += '<html lang="en">\n'
-    epyCONTENT_ntkGen += "<head>\n"
-    epyCONTENT_ntkGen += '<meta charset="UTF-8">\n'
-    epyCONTENT_ntkGen += '<meta http-equiv="X-UA-Compatible" content="IE=edge">\n'
-    epyCONTENT_ntkGen += (
+    global ntk_ContGen
+    ntk_ContGen += "<!DOCTYPE html>\n"
+    ntk_ContGen += '<html lang="en">\n'
+    ntk_ContGen += "<head>\n"
+    ntk_ContGen += '<meta charset="UTF-8">\n'
+    ntk_ContGen += '<meta http-equiv="X-UA-Compatible" content="IE=edge">\n'
+    ntk_ContGen += (
         '<meta name="viewport" content="width=device-width, initial-scale=1.0">\n'
     )
-    epyCONTENT_ntkGen += ntkTitle
-    epyCONTENT_ntkGen += "</head>\n"
-    epyCONTENT_ntkGen += "<body>\n"
-    epyCONTENT_ntkGen += "<!-- Created with Epytoml and Notaker. Version 1.0 --> \n"
-    epyCONTENT_ntkGen += "<!-- Notaker Start --> \n"
-    epyCONTENT_ntkGen += ntkTitleHead
+    ntk_ContGen += ntkTitle
+    ntk_ContGen += "</head>\n"
+    ntk_ContGen += "<body>\n"
+    ntk_ContGen += "<!-- Created with Epytoml and Notaker. Version 1.0 --> \n"
+    ntk_ContGen += "<!-- Notaker Start --> \n"
+    ntk_ContGen += ntkTitleHead
 
 
 def ntkShut():
@@ -73,66 +73,64 @@ def ntkShut():
     # </body>
     # </html>
 
-    global epyCONTENT_ntkGen
-    global epyCONTENT_toc
-    global epyCONTENT_main
-    global epyCONTENT_ntkShut
+    global ntk_ContGen
+    global ntk_ContToc
+    global ntk_ContMain
+    global ntk_ContShut
 
-    epyCONTENT_ntkShut += "<!-- Notaker End -->\n"
-    epyCONTENT_ntkShut += "</body>\n"
-    epyCONTENT_ntkShut += "</html>\n"
+    ntk_ContShut += "<!-- Notaker End -->\n"
+    ntk_ContShut += "</body>\n"
+    ntk_ContShut += "</html>\n"
 
-    # append all the content to the epyCONTENT variable
-    global epyCONTENT
-    epyCONTENT += (
-        epyCONTENT_ntkGen
+    # append all the content to the ntk_ContWhole variable
+    global ntk_ContWhole
+    ntk_ContWhole += (
+        ntk_ContGen
         + "\n"
-        + epyCONTENT_toc
+        + ntk_ContToc
         + "\n"
-        + epyCONTENT_main
+        + ntk_ContMain
         + "\n"
-        + epyCONTENT_ntkShut
+        + ntk_ContShut
         + "\n"
     )
 
 
-def h1(text):
+def h1(content):
     # Make a header with the given text
-    ntkHeader1 = "<h1>" + text + "</h1>\n"
+    ntkHeader1 = "<h1>" + content + "</h1>\n"
 
     # Make a link id to the said header, to be used in the table of contents
-    ntkID = '<a id="' + text + '"></a>\n'
+    ntkID = '<a id="' + content + '"></a>\n'
 
-    # Add the header to the heads dictionary
-    heads[headCount] = ntkHeader1
+    # Add the header to the ntk_heads dictionary
+    ntk_heads[ntk_headCount] = ntkHeader1
 
-    global epyCONTENT_main
-    epyCONTENT_main += ntkHeader1
-    epyCONTENT_main += ntkID
-
-    makeLink(headCount, text)
+    global ntk_ContMain
+    ntk_ContMain += ntkHeader1
+    ntk_ContMain += ntkID
 
 
-def makeLink(headerNumber, text):
+def makeLink(headerNumber, content):
     # convert headerNumber to str, so it can be concatenated with ntkRefText
     headerNumberStr = str(headerNumber)
 
-    ntkRefText = "Chapter " + headerNumberStr + ": " + text
-    ntkRef = '<a href="#' + text + '">' + ntkRefText + "</a><br>\n"
+    ntkRefText = "Chapter " + headerNumberStr + ": " + content
+    ntkRef = '<a href="#' + content + '">' + ntkRefText + "</a><br>\n"
 
-    links[headerNumber] = ntkRef
+    ntk_links[headerNumber] = ntkRef
 
-    # append 1 to headCount
-    global headCount
-    headCount += 1
+    # append 1 to ntk_headCount
+    global ntk_headCount
+    ntk_headCount += 1
 
 
 def toc(size=None):
     # make a table of contents
-    
+
     headerValStart = "<h1>"
     headerValEnd = "</h1>"
-    
+
     # make size=none to make it default to the header 1 size, unless specified
     if size is None or size == 1:
         headerValStart = "<h1>"
@@ -152,64 +150,64 @@ def toc(size=None):
             headerValStart = "<h1>"
             headerValEnd = "</h1>"
 
-    global epyCONTENT_toc
-    
+    global ntk_ContToc
+
     tocTitle = headerValStart + "<b>Table of Contents</b>" + headerValEnd + "\n"
 
-    epyCONTENT_toc += tocTitle
+    ntk_ContToc += tocTitle
 
-    global headCount
-    for header in range(1, headCount):
-        linkTitle = links[header]
+    global ntk_headCount
+    for header in range(1, ntk_headCount):
+        linkTitle = ntk_links[header]
         linkTitle += "\n"
-        epyCONTENT_toc += linkTitle
+        ntk_ContToc += linkTitle
 
 
-def text(text, emphasis=None):
+def text(content, emphasis=None):
     # write text to the main body of the Notaker file
     # text does not insert a <br> at the end of the text
     emphasis = emphasis.lower()
     if emphasis is None:
         # default text when there are no emphasis tags specified
-        ntkP = "<p>" + text + "</p>\n"
+        ntkP = "<p>" + content + "</p>\n"
     else:
-        if emphasis == "b":
+        if emphasis == "b" or emphasis == "bold" or emphasis == "1":
             # bold text
-            ntkP = "<p><b>" + text + "</b></p>\n"
-        elif emphasis == "i":
+            ntkP = "<p><b>" + content + "</b></p>\n"
+        elif emphasis == "i" or emphasis == "italic" or emphasis == "2":
             # italic text
-            ntkP = "<p><i>" + text + "</i></p>\n"
-        elif emphasis == "u":
+            ntkP = "<p><i>" + content + "</i></p>\n"
+        elif emphasis == "u" or emphasis == "underline" or emphasis == "3":
             # underline text
-            ntkP = "<p><u>" + text + "</u></p>\n"
+            ntkP = "<p><u>" + content + "</u></p>\n"
         else:
             # if input not found then set to default
-            ntkP = "<p>" + text + "</p>\n"
+            ntkP = "<p>" + content + "</p>\n"
 
-    global epyCONTENT_main
-    epyCONTENT_main += ntkP
+    global ntk_ContMain
+    ntk_ContMain += ntkP
 
 
-def textL(text, emphasis=None):
+def textL(content, emphasis=None):
     # write text to the main body of the Notaker file
     # textL inserts a <br> at the end of the text
 
     if emphasis is None:
         # default text when there are no emphasis tags specified
-        ntkP = "<p>" + text + "</p><br>\n"
+        ntkP = "<p>" + content + "</p><br>\n"
     else:
-        if emphasis == "b":
+        if emphasis == "b" or emphasis == "bold" or emphasis == "1":
             # bold text
-            ntkP = "<p><b>" + text + "</b></p><br>\n"
-        elif emphasis == "i":
+            ntkP = "<p><b>" + content + "</b></p><br>\n"
+        elif emphasis == "i" or emphasis == "italic" or emphasis == "2":
             # italic text
-            ntkP = "<p><i>" + text + "</i></p><br>\n"
-        elif emphasis == "u":
+            ntkP = "<p><i>" + content + "</i></p><br>\n"
+        elif emphasis == "u" or emphasis == "underline" or emphasis == "3":
             # underline text
-            ntkP = "<p><u>" + text + "</u></p><br>\n"
+            ntkP = "<p><u>" + content + "</u></p><br>\n"
         else:
             # if input not found then set to default
-            ntkP = "<p>" + text + "</p><br>\n"
+            ntkP = "<p>" + content + "</p><br>\n"
 
-    global epyCONTENT_main
-    epyCONTENT_main += ntkP
+    global ntk_ContMain
+    ntk_ContMain += ntkP

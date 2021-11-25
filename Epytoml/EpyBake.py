@@ -1,21 +1,23 @@
+# Epytomil, EpyBake
+# Created by: Zhean Ganituen
+
 import os.path as path
 import os
 import pdfkit
 
 
-def folderPath(initialDirectory):
+def bakePath(directory):
     # this function fixes the given directory path of the user
     finalDirectory = ""
     # duplicate \ of the directory
-    for char in initialDirectory:
+    for char in directory:
         if char == "\\":
             finalDirectory += char + char
         else:
             finalDirectory += char
 
     # join the directory with the filename
-    return finalDirectory
-
+    return directory
 
 def ntkBake(fileName, content, exportTo=None, directory=None):
     fileNameType = fileName + ".html"
@@ -41,16 +43,13 @@ def ntkBake(fileName, content, exportTo=None, directory=None):
 
     else:
 
-        # if the user gave a directory, use this
-        finalDirectory = folderPath(directory)
-
         # comepleteFileName of .html file
-        completeFileName = path.join(finalDirectory, fileNameType)
+        completeFileName = path.join(directory, fileNameType)
 
         fileNameTypePDF = fileName + ".pdf"
 
         # completeFileName of .pdf file
-        completeFileNamePDF = path.join(finalDirectory, fileNameTypePDF)
+        completeFileNamePDF = path.join(directory, fileNameTypePDF)
 
         if exportTo is None or exportTo == 0:
             # run default, export to both html and pdf
