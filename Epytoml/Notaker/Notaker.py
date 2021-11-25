@@ -106,7 +106,7 @@ def ntkShut():
     )
 
 
-def h1(content):
+def h(content):
     # Make a header with the given text
     ntkHeader1 = "<h1>" + content + "</h1>\n"
 
@@ -119,6 +119,36 @@ def h1(content):
     global ntk_ContMain
     ntk_ContMain += ntkHeader1
     ntk_ContMain += ntkID
+
+
+def hh(content):
+    ntkHeader2 = "<h2>" + content + "</h2>\n"
+    global ntk_ContMain
+    ntk_ContMain += ntkHeader2
+
+
+def h3(content):
+    ntkHeader3 = "<h3>" + content + "</h3>\n"
+    global ntk_ContMain
+    ntk_ContMain += ntkHeader3
+
+
+def h4(content):
+    ntkHeader4 = "<h4>" + content + "</h4>\n"
+    global ntk_ContMain
+    ntk_ContMain += ntkHeader4
+
+
+def h5(content):
+    ntkHeader5 = "<h5>" + content + "</h5>\n"
+    global ntk_ContMain
+    ntk_ContMain += ntkHeader5
+    
+    
+def h6(content):
+    ntkHeader6 = "<h6>" + content + "</h6>\n"
+    global ntk_ContMain
+    ntk_ContMain += ntkHeader6
 
 
 def makeLink(headerNumber, content):
