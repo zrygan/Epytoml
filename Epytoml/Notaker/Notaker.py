@@ -228,10 +228,12 @@ def textL(content, emphasis=None):
 def makeTitle(authorNames, date=None, dateFormat=None):
     global ntk_ContMakeTitle
 
-    #code for name formatting
+    # code for name formatting
 
     authorFirstName = {}
     authorSurname = {}
+
+    titleAuthor = ""
 
     for author in range(1, len(authorNames) + 1):
         # first name of author
@@ -245,15 +247,30 @@ def makeTitle(authorNames, date=None, dateFormat=None):
     titleDate = ""
 
     if date is None:
+        monthNames = [
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December",
+        ]
         # if no date is specified, get the current month and year
+
         titleYear = dt.today().year
         titleYear = str(titleYear)
 
         titleMonth = dt.today().month
-        titleMonth = str(titleMonth)
-
         # convert month to month name
         titleMonth = monthNames[titleMonth - 1]
+
+        titleDate = titleMonth + " " + titleYear
 
     else:
         # if a date is specified, use it.
@@ -263,12 +280,46 @@ def makeTitle(authorNames, date=None, dateFormat=None):
 
         titleMonth = date["month"]
 
-    # only allow date formatting if dates (day, month, and year) is specified
     if date is not None:
+        # only allow date formatting if dates (day, month, and year) is specified
         if dateFormat is None:
             # if no date format is specified, set the date format to the default (Month YYYY)
-            titleDate = titleYear + titleMonth
+            titleDate = titleYear + " " + titleMonth
         elif dateFormat == "1":
             # dateFormat 1 is Month DD, YYYY
-            titleDate = titleMonth + titleDay + ", " + titleYear
+            titleDate = titleMonth + " " + titleDay + ", " + titleYear
         elif dateFormat == "2":
+            # dateFormat 2 is YYYY
+            titleDate = titleYear
+        else:
+            # if input not found then set to default
+            titleDate = titleYear + " " + titleMonth
+
+    # add the title
+
+    # <h2><b> titleAuthor </b></h2>
+    # <h2><b> titleDate </b></h2>
+
+    # count authors to check if we're going to use et al. and <abbr>
+    titleAuthor += "<h2><b>"
+    if len(authorNames) >= 6:
+        titleAuthor += authorFirstName[1] + " " + authorSurname[1] + '<abbr title="'
+        for i in range(2, len(authorNames) + 1):
+            if i == len(authorNames):
+                titleAuthor += authorFirstName[i] + " " + authorSurname[i]
+            else:
+                titleAuthor += authorFirstName[i] + " " + authorSurname[i] + ", "
+        titleAuthor += '"> et al. </abbr>'
+    else:
+        for i in range(1, len(authorNames) + 1):
+            if i == len(authorNames):
+                titleAuthor += authorFirstName[i] + " " + authorSurname[i]
+            else:
+                titleAuthor += authorFirstName[i] + " " + authorSurname[i] + ", "
+
+    titleAuthor += "</b></h2>\n"
+
+    titleDate = "<h2><b>" + titleDate + "</b></h2>\n"
+
+    ntk_ContMakeTitle = titleAuthor + "<br>" + titleDate
+    
