@@ -383,11 +383,45 @@ def lightUpBlockS(textColor=None, highlightColor=None):
 
     ntk_ContMain += '<div style="' + color + bgColor + '">'
 
+
 def lightUpBlockE():
     # End highlighting block
-    
+
     global ntk_ContMain
-    
+
     ntk_ContMain += "</div>"
 
-def lightUp():
+
+def lightUpS(textColor=None, highlightColor=None):
+    # start highlight text
+    # the difference between `lightUp` and `lightUpBlock`:
+    # `lightUp` uses span tags to highlight the text, same line
+    # `lightUpBlock` uses div tags to highlight the text, new line
+
+    global ntk_ContMain
+
+    # check if textColor is specified
+    if textColor is None:
+        # if text color is not specified, set to default
+        color = "color: " + "black" + ";"
+    else:
+        # if text color is specified, use it
+        color = "color: " + textColor + ";"
+
+    # check if highlightColor is specified
+    if highlightColor is None:
+        # if highlight color is not specified, set to default
+        bgColor = "background-color: " + "yellow"
+    else:
+        # if highlightColor is specified, use it
+        bgColor = "background-color: " + highlightColor
+
+    ntk_ContMain += '<span style="' + color + bgColor + '">'
+
+
+def lightUpE():
+    # End highlighting block
+
+    global ntk_ContMain
+
+    ntk_ContMain += "</span>"
