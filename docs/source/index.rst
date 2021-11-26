@@ -17,13 +17,6 @@ Epytoml is a python package that converts plain text into a specified markup lan
    :maxdepth: 2
    :caption: Contents:
 
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
-
 Contents
 --------
 
