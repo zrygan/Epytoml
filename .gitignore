@@ -7,3 +7,5 @@
 /.vscode/
 /test.py
 /test.html
+/.venv/
+/docs/build/
