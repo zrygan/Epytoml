@@ -362,11 +362,12 @@ def t(content, emphasis=None):
     """
     # write text to the main body of the Notaker file
     # text does not insert a <br> at the end of the text
-    emphasis = emphasis.lower()
+
     if emphasis is None:
         # default text when there are no emphasis tags specified
         ntkP = "<p>" + content + "</p>\n"
     else:
+        emphasis = emphasis.lower()
         if emphasis == "b" or emphasis == "bold" or emphasis == "1":
             # bold text
             ntkP = "<p><b>" + content + "</b></p>\n"
@@ -403,6 +404,7 @@ def tL(content, emphasis=None):
         # default text when there are no emphasis tags specified
         ntkP = "<p>" + content + "</p><br>\n"
     else:
+        emphasis = emphasis.lower()
         if emphasis == "b" or emphasis == "bold" or emphasis == "1":
             # bold text
             ntkP = "<p><b>" + content + "</b></p><br>\n"
@@ -592,8 +594,7 @@ def lightUpBlockS(textColor=None, highlightColor=None):
 
 
 def lightUpBlockE():
-    """Closes the highlighted text box created.
-    """
+    """Closes the highlighted text box created."""
     # End highlighting block
 
     global ntk_ContMain
@@ -667,8 +668,7 @@ def lightUpS(textColor=None, highlightColor=None):
 
 
 def lightUpE():
-    """Closes opened text highlighting.
-    """
+    """Closes opened text highlighting."""
     # End highlighting block
 
     global ntk_ContMain
@@ -680,7 +680,7 @@ def note(content, borderColor=None, textColor=None, autoHide=None, summaryText=N
     """Creates a blockquote
 
     Args:
-    
+
         content (str): This is the text displayed in the highlighted text block.
         borderColor (str, optional): Specified the blockquote left border color. Defaults to red.
         textColor (str, optional): Specifies the font color. Defaults to black.
@@ -758,8 +758,8 @@ def note(content, borderColor=None, textColor=None, autoHide=None, summaryText=N
 
 
 class shortcutsClass:
-    """Contains all the function needed for Notaker shortcuts
-    """
+    """Contains all the function needed for Notaker shortcuts"""
+
     def __init__(self):
         # count how many shortcuts are there
         self.shortcutCount = 1
@@ -855,8 +855,7 @@ class shortcutsClass:
                     print(self.shortcutList[key])
 
     def readMain(self):
-        """Reads the ntk_ContMain variable and replaces all shortcuts used with their corresponding value.
-        """
+        """Reads the ntk_ContMain variable and replaces all shortcuts used with their corresponding value."""
         # read the ntk_ContMain variable (or the main content of the Notaker file created)
         # and check for any shortcuts, and replace the shortcut address with the value
         global ntk_ContMain
