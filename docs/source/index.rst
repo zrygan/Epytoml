@@ -3,14 +3,19 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Epytoml's documentation!
+Epytoml
 ===================================
+
+The Epitome of Python to Markup Language
+
+Epytoml is a python package that converts plain text into a specified markup language using python. 
+
+.. note::
+   This project is underdevelopment, though it is stable and usaable. 
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
-
-
 
 Indices and tables
 ==================
@@ -18,3 +23,10 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
+
+Contents
+--------
+
+.. toctree::
+   usage
+   Notaker
