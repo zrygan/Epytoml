@@ -8,33 +8,63 @@ from datetime import date as dt
 
 # variable that stores all of the content of the Notaker file being created
 ntk_ContWhole = ""
+"""Stores all the whole Notaker document.
+"""
 
 # these variables are the variables for the Notaker file being created
 # _toc and _main are separated because _toc has to come first but the headers must be complete once it is generated
 ntk_ContGen = ""
+"""Stores all the created text by the contGen function.
+"""
+
 ntk_ContShut = ""
+"""Stores all the created text by the contShut function.
+"""
+
 ntk_ContToc = ""
+"""Stores all the table of contents of the Notaker document.
+"""
+
 ntk_ContMain = ""
+"""Stores all the body of the Notaker document.
+"""
+
 ntk_ContMakeTitle = ""
+"""Stores all the created text by the makeTitle function.
+"""
 
 
 # variable that collects all the headerCounts and their corresponding text in a key
 ntk_heads = {}
+"""Stores all the headers created using a header function accompanied by the headCountAdd function
+"""
 
 # variable that collects all the ntk_links of the headers, to be used in the table of contents
 ntk_links = {}
+"""Stores all the links created using the makeLink function, this is used in the toc function.
+"""
 
 # variable that stores the author name/s
 # this variable must have its key as the author surname and the value as the author name/s
 # sample: {1: ["FirstName_1", "Surname_1"], 2: ["FirstName_2", "Surname_2"] ... }
 ntk_authors = {}
+"""Stores the names of the author/s. {1: ["FirstName_N", "Surname_N"] ... }
+
+"""
 
 
 # variable that stores the creation date of the file
 ntk_date = {"month": "", "day": "", "year": ""}
+"""Stores the date the Notaker file was created.
+"""
 
 
 def ntkGen(fileName):
+    """Writes all the document type declaration, html document start, html head, and html body.
+
+    Args:
+        fileName (str): This is will be the file name of your document.
+    """
     # ntkFile is the output of the Notaker, append all user inputs here.
     file = fileName + ".html"
 
@@ -71,6 +101,8 @@ def ntkGen(fileName):
 
 
 def ntkShut():
+    """Writes html document end, and html head end. Always end your Epytoml code with this."""
+
     # write the end of an html document
     # </body>
     # </html>
@@ -101,18 +133,37 @@ def ntkShut():
     )
 
 
-def nl(value):
+def nl(lines=None):
+    """Creates one or multiple line breaks.
+
+    Args:
+        lines (int): Specifies how many line breaks are to be created, if lines is not given a value, this function will only create one line.
+    """
     global ntk_ContMain
-    for i in range(value):
+    # check if lines is none
+    if lines is None:
+        # if it is none, set it to default or 1
+        lines = 1
+    for i in range(lines):
         ntk_ContMain += "<br> \n"
 
 
 class headerClass:
+    """Contains all the functions needed in creating main headers (h1), creating hyperlinks and hyperlink ids, and adding the table of contents."""
+
     def __init__(self):
         # variable that counts how many header 1s are created
         self.headCount = 1
 
     def h(self, content):
+        """Creates a main header (or h1 in html).
+
+        Args:
+            content (str): This is the text the header will display.
+
+        Returns:
+            This returns the complete (formatted) main header in html format.
+        """
         # Make a header with the given text
         ntkHeader1 = "<h1>" + content + "</h1>\n"
 
@@ -125,6 +176,15 @@ class headerClass:
         return ntkHeader1
 
     def makeLink(self, content, autoFormat=None):
+        """Creates a hyperlink, to be used in the toc function.
+
+        Args:
+            content (str): This will be set as the hyperlink URL address. Always use the same content as the makeId function that precedes the makeLink function.
+            autoFormat (bool, optional): The makeLink function automatically adds 'Chapter N:' before the content. Defaults to True.
+
+        Returns:
+            This returns the complete (formatted) hyperlink in html format.
+        """
         # convert headerNumber to str, so it can be concatenated with ntkRefText
         headerNumberStr = str(self.headCount)
 
@@ -147,6 +207,14 @@ class headerClass:
         return ntkRef
 
     def makeId(self, content):
+        """Creates an id attribute. Always add this function every h function call.
+
+        Args:
+            content (str): This will be set as the hyperlink URL address.
+
+        Returns:
+            This returns the complete (formatted) id in html format.
+        """
         global ntk_ContMain
         # Make a link id to the said header, to be used in the table of contents
         ntkID = '<a id="' + content + '"></a>\n'
@@ -156,10 +224,16 @@ class headerClass:
         return ntkID
 
     def headCountAdd(self):
+        """Increments the ntk_heads variable."""
         # increment the headerCount by 1
         self.headCount += 1
 
     def toc(self, size=None):
+        """Creates the table of contents after the title of the Notaker document.
+
+        Args:
+            size (int, optional): This specifies what the font size of the table of contents title. Defaults to size 1.
+        """
         # make a table of contents
 
         headerValStart = "<h1>"
@@ -197,6 +271,14 @@ class headerClass:
 
 
 def hh(content):
+    """Creates a 2nd subheader (or h2 in html).
+
+    Args:
+        content (str): This is the text the header will display.
+
+    Returns:
+        This returns the complete (formatted) main header in html format.
+    """
     ntkHeader2 = "<h2>" + content + "</h2>\n"
     global ntk_ContMain
     ntk_ContMain += ntkHeader2
@@ -205,6 +287,14 @@ def hh(content):
 
 
 def h3(content):
+    """Creates a 3rd subheader (or h3 in html).
+
+    Args:
+        content (str): This is the text the header will display.
+
+    Returns:
+        This returns the complete (formatted) main header in html format.
+    """
     ntkHeader3 = "<h3>" + content + "</h3>\n"
     global ntk_ContMain
     ntk_ContMain += ntkHeader3
@@ -213,6 +303,14 @@ def h3(content):
 
 
 def h4(content):
+    """Creates a 4th subheader (or h4 in html).
+
+    Args:
+        content (str): This is the text the header will display.
+
+    Returns:
+        This returns the complete (formatted) main header in html format.
+    """
     ntkHeader4 = "<h4>" + content + "</h4>\n"
     global ntk_ContMain
     ntk_ContMain += ntkHeader4
@@ -221,6 +319,14 @@ def h4(content):
 
 
 def h5(content):
+    """Creates a 5th subheader (or h5 in html).
+
+    Args:
+        content (str): This is the text the header will display.
+
+    Returns:
+        This returns the complete (formatted) main header in html format.
+    """
     ntkHeader5 = "<h5>" + content + "</h5>\n"
     global ntk_ContMain
     ntk_ContMain += ntkHeader5
@@ -229,6 +335,14 @@ def h5(content):
 
 
 def h6(content):
+    """Creates a 6th subheader (or h6 in html).
+
+    Args:
+        content (str): This is the text the header will display.
+
+    Returns:
+        This returns the complete (formatted) main header in html format.
+    """
     ntkHeader6 = "<h6>" + content + "</h6>\n"
     global ntk_ContMain
     ntk_ContMain += ntkHeader6
@@ -237,6 +351,15 @@ def h6(content):
 
 
 def t(content, emphasis=None):
+    """Creates normal text in the Notaker document (or p in html).
+
+    Args:
+        content (str): This is the text the t function will display.
+        emphasis (str, optional): Adds text emphasis to the content. Defaults to None.
+
+    Returns:
+        This returns the complete (formatted) text in html format.
+    """
     # write text to the main body of the Notaker file
     # text does not insert a <br> at the end of the text
     emphasis = emphasis.lower()
@@ -264,6 +387,15 @@ def t(content, emphasis=None):
 
 
 def tL(content, emphasis=None):
+    """Creates normal text and a new line at the bottom in the Notaker document.
+
+    Args:
+        content (str): This is the text the tL function will display.
+        emphasis (str, optional): Adds text emphasis to the content. Defaults to None.
+
+    Returns:
+        This returns the complete (formatted) text in html format.
+    """
     # write text to the main body of the Notaker file
     # textL inserts a <br> at the end of the text
 
@@ -291,6 +423,13 @@ def tL(content, emphasis=None):
 
 
 def makeTitle(authorNames, date=None, dateFormat=None):
+    """Adds a title section in the Notaker document.
+
+    Args:
+        authorNames (dict): The author/s of the Notaker document as a dict, {1: ["FirstName_N", "Surname_N"] ... }.
+        date (dict, optional): The creation date the Notaker document, {"month": "", "day": "", "year": ""}. Defaults to None.
+        dateFormat (int, optional): Specifies what date format will be used. Defaults to year-month date format.
+    """
     # creates a title for the Notaker file after ntk_ContGen
     global ntk_ContMakeTitle
 
@@ -348,18 +487,18 @@ def makeTitle(authorNames, date=None, dateFormat=None):
 
     if date is not None:
         # only allow date formatting if dates (day, month, and year) is specified
-        if dateFormat is None:
-            # if no date format is specified, set the date format to the default (Month YYYY)
-            titleDate = titleYear + " " + titleMonth
-        elif dateFormat == "1":
+        if dateFormat == 1:
             # dateFormat 1 is Month DD, YYYY
             titleDate = titleMonth + " " + titleDay + ", " + titleYear
-        elif dateFormat == "2":
+        elif dateFormat == 2:
             # dateFormat 2 is YYYY
             titleDate = titleYear
         else:
             # if input not found then set to default
             titleDate = titleYear + " " + titleMonth
+    else:
+        # if no date format is specified, set the date format to the default (Month YYYY)
+        titleDate = titleYear + " " + titleMonth
 
     # add the title
 
@@ -391,6 +530,13 @@ def makeTitle(authorNames, date=None, dateFormat=None):
 
 
 def lightUpBlock(content, textColor=None, highlightColor=None):
+    """Creates a highlighted text block. That automatically opens and closes.
+
+    Args:
+        content (str): This is the text displayed in the highlighted text block.
+        textColor (str, optional): Specifies the font color. Defaults to black.
+        highlightColor (str, optional): Specifies the highlight color. Defaults to yellow.
+    """
     # highlight block text with given content
 
     global ntk_ContMain
@@ -415,6 +561,12 @@ def lightUpBlock(content, textColor=None, highlightColor=None):
 
 
 def lightUpBlockS(textColor=None, highlightColor=None):
+    """Opens a highlighted text block. That does not close immediately.
+
+    Args:
+        textColor (str, optional): Specifies the font color. Defaults to black.
+        highlightColor (str, optional): Specifies the highlight color. Defaults to yellow.
+    """
     # start highlighting block
     # not only does it highlight the text, but it highlights the whole line where the text is located
 
@@ -440,6 +592,8 @@ def lightUpBlockS(textColor=None, highlightColor=None):
 
 
 def lightUpBlockE():
+    """Closes the highlighted text box created.
+    """
     # End highlighting block
 
     global ntk_ContMain
@@ -448,6 +602,13 @@ def lightUpBlockE():
 
 
 def lightUp(content, textColor=None, highlightColor=None):
+    """Highlights text
+
+    Args:
+        content (str): This is the text displayed with highlight.
+        textColor (str, optional): Specifies the font color. Defaults to black.
+        highlightColor (str, optional): Specifies the highlight color. Defaults to yellow.
+    """
     # highlight text with given content
 
     global ntk_ContMain
@@ -472,6 +633,12 @@ def lightUp(content, textColor=None, highlightColor=None):
 
 
 def lightUpS(textColor=None, highlightColor=None):
+    """Opens text highlighting.
+
+    Args:
+        textColor (str, optional): Specifies the font color. Defaults to black.
+        highlightColor (str, optional): Specifies the highlight color. Defaults to yellow.
+    """
     # start highlight text
     # highlight text without given content
     # the difference between `lightUp` and `lightUpBlock`:
@@ -500,6 +667,8 @@ def lightUpS(textColor=None, highlightColor=None):
 
 
 def lightUpE():
+    """Closes opened text highlighting.
+    """
     # End highlighting block
 
     global ntk_ContMain
@@ -508,6 +677,16 @@ def lightUpE():
 
 
 def note(content, borderColor=None, textColor=None, autoHide=None, summaryText=None):
+    """Creates a blockquote
+
+    Args:
+    
+        content (str): This is the text displayed in the highlighted text block.
+        borderColor (str, optional): Specified the blockquote left border color. Defaults to red.
+        textColor (str, optional): Specifies the font color. Defaults to black.
+        autoHide (bool, optional): Wraps the blockquote in a togglable show and hide switch. Defaults to False.
+        summaryText (str, optional): This is the text displayed when the blockquote toggle is set to hide. Defaults to 'Notes:' .
+    """
     # create a note
 
     # check if borderColor is specified
@@ -579,6 +758,8 @@ def note(content, borderColor=None, textColor=None, autoHide=None, summaryText=N
 
 
 class shortcutsClass:
+    """Contains all the function needed for Notaker shortcuts
+    """
     def __init__(self):
         # count how many shortcuts are there
         self.shortcutCount = 1
@@ -587,6 +768,12 @@ class shortcutsClass:
         self.shortcutList = {}
 
     def addShortcut(self, address, value):
+        """Add a shortcut to the shortcut dictionary
+
+        Args:
+            address (str): The address (!, @, $) of the shortcut.
+            value (str): The value of the shortcut.
+        """
         # adds a shortcut to the shortcut list
         # check if the key provided has an address
 
@@ -603,10 +790,24 @@ class shortcutsClass:
         self.shortcutCount += 1
 
     def mergeShortcut(self, dictionary):
+        """Merge the shortcut dictionary with an existing dictionary.
+
+        Args:
+            dictionary (dict): The dictionary that will be merged with the shortcut dictionary.
+        """
         # merge a dictionary with the shortcut list
         self.shortcutList = self.shortcutList | dictionary
 
     def viewShortcut(self, printList=None, key=None):
+        """Returns the shortcut dictionary.
+
+        Args:
+            printList (bool, optional): Prints shortcut dictionary. Defaults to False.
+            key (str, optional): Specifies what shortcut will be returned. Defaults to None.
+
+        Returns:
+            The shortcut dictionary.
+        """
         # lets the user view the shortcut list or a specific shortcut
         if key is None:
             # if key is none, return all the shortcuts
@@ -624,6 +825,16 @@ class shortcutsClass:
                 print(self.shortcutList[key])
 
     def viewRangeShortcut(self, rangeMin, rangeMax, printList=None):
+        """Returns a range of keys requested in the shortcut dictionary.
+
+        Args:
+            rangeMin (str): The lowest key value requested.
+            rangeMax (str): The highest key value requested.
+            printList (bool, optional): Prints the range requested in the shortcut dictionary. Defaults to False.
+
+        Returns:
+            The range of shortcut dictionary
+        """
         # lets the user view a range of shortcuts
         for key in range(rangeMin, rangeMax + 1):
             # for each key in range, print the shortcut
@@ -644,20 +855,22 @@ class shortcutsClass:
                     print(self.shortcutList[key])
 
     def readMain(self):
+        """Reads the ntk_ContMain variable and replaces all shortcuts used with their corresponding value.
+        """
         # read the ntk_ContMain variable (or the main content of the Notaker file created)
         # and check for any shortcuts, and replace the shortcut address with the value
         global ntk_ContMain
 
         for key in self.shortcutList:
             # iterate for each key in the shortcut list
-            
+
             # {key: [shortcutAddress, shortcutValue]
-            
+
             # give the value of the shortcut address to shortcutAddress
             shortcutAddress = self.shortcutList[key][0]
-            
+
             # give the value of the shortcut value to shortcutValue
             shortcutValue = self.shortcutList[key][1]
-            
+
             # check if the shortcut address is in the content then replace the key with the value
             ntk_ContMain = ntk_ContMain.replace(shortcutAddress, shortcutValue)
