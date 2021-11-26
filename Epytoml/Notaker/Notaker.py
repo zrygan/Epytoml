@@ -232,6 +232,8 @@ def t(content, emphasis=None):
 
     global ntk_ContMain
     ntk_ContMain += ntkP
+    
+    return ntkP
 
 
 def tL(content, emphasis=None):
@@ -257,6 +259,8 @@ def tL(content, emphasis=None):
 
     global ntk_ContMain
     ntk_ContMain += ntkP
+    
+    return ntkP
 
 
 def makeTitle(authorNames, date=None, dateFormat=None):
