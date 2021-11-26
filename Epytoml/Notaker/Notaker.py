@@ -576,3 +576,88 @@ def note(content, borderColor=None, textColor=None, autoHide=None, summaryText=N
         ntk_ContMain += "</p>"
 
         ntk_ContMain += blockQuoteEnd
+
+
+class shortcutsClass:
+    def __init__(self):
+        # count how many shortcuts are there
+        self.shortcutCount = 1
+        # dictionary filled with the shortcuts
+        # sample: {1: ["Address", "Value"], 2: ["Address_2", "Value_2"] ... }
+        self.shortcutList = {}
+
+    def addShortcut(self, address, value):
+        # adds a shortcut to the shortcut list
+        # check if the key provided has an address
+
+        if "!" in address or "@" in address or "$" in address:
+            # key already has an address
+            self.shortcutList[self.shortcutCount] = [address, value]
+        else:
+            # key doesnt have an address
+            # set a default address to the key
+            address = "@" + address
+            self.shortcutList[self.shortcutCount] = [address, value]
+
+        # append 1 to the value of shortcutCount
+        self.shortcutCount += 1
+
+    def mergeShortcut(self, dictionary):
+        # merge a dictionary with the shortcut list
+        self.shortcutList = self.shortcutList | dictionary
+
+    def viewShortcut(self, printList=None, key=None):
+        # lets the user view the shortcut list or a specific shortcut
+        if key is None:
+            # if key is none, return all the shortcuts
+            if printList == True:
+                # if print is true, print and return the shortcuts
+                print(self.shortcutList)
+                return self.shortcutList
+            else:
+                # if print is false, return the shortcuts
+                return self.shortcutList
+        else:
+            # if key is not none, return the specific shortcut
+            if printList == True:
+                # if print is true, print and return the specific shortcut
+                print(self.shortcutList[key])
+
+    def viewRangeShortcut(self, rangeMin, rangeMax, printList=None):
+        # lets the user view a range of shortcuts
+        for key in range(rangeMin, rangeMax + 1):
+            # for each key in range, print the shortcut
+            # check if printList is not None
+            if printList is None:
+                # if printList is None, return the shortcut
+                return self.shortcutList[key]
+            else:
+                # if printList is not None, print the shortcut
+                if printList == True:
+                    # if printList is True, print the shortcut
+                    print(self.shortcutList[key])
+                elif printList == False:
+                    # if printList is False, return the shortcut
+                    return self.shortcutList[key]
+                else:
+                    # if printList is not True or False, print the shortcut
+                    print(self.shortcutList[key])
+
+    def readMain(self):
+        # read the ntk_ContMain variable (or the main content of the Notaker file created)
+        # and check for any shortcuts, and replace the shortcut address with the value
+        global ntk_ContMain
+
+        for key in self.shortcutList:
+            # iterate for each key in the shortcut list
+            
+            # {key: [shortcutAddress, shortcutValue]
+            
+            # give the value of the shortcut address to shortcutAddress
+            shortcutAddress = self.shortcutList[key][0]
+            
+            # give the value of the shortcut value to shortcutValue
+            shortcutValue = self.shortcutList[key][1]
+            
+            # check if the shortcut address is in the content then replace the key with the value
+            ntk_ContMain = ntk_ContMain.replace(shortcutAddress, shortcutValue)
