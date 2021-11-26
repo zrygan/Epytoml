@@ -209,7 +209,7 @@ def toc(size=None):
         ntk_ContToc += linkTitle
 
 
-def text(content, emphasis=None):
+def t(content, emphasis=None):
     # write text to the main body of the Notaker file
     # text does not insert a <br> at the end of the text
     emphasis = emphasis.lower()
@@ -234,7 +234,7 @@ def text(content, emphasis=None):
     ntk_ContMain += ntkP
 
 
-def textL(content, emphasis=None):
+def tL(content, emphasis=None):
     # write text to the main body of the Notaker file
     # textL inserts a <br> at the end of the text
 
@@ -260,6 +260,7 @@ def textL(content, emphasis=None):
 
 
 def makeTitle(authorNames, date=None, dateFormat=None):
+    # creates a title for the Notaker file after ntk_ContGen
     global ntk_ContMakeTitle
 
     # code for name formatting
@@ -356,3 +357,35 @@ def makeTitle(authorNames, date=None, dateFormat=None):
     titleDate = "<h2><b>" + titleDate + "</b></h2>\n"
 
     ntk_ContMakeTitle = titleAuthor + titleDate
+
+
+def lightUpBlockS(textColor=None, highlightColor=None):
+    # start highlighting block
+    # not only does it highlight the text, but it highlights the whole line where the text is located
+
+    global ntk_ContMain
+
+    # check if textColor is specified
+    if textColor is None:
+        # if text color is not specified, set to default
+        color = "color: " + "black" + ";"
+    else:
+        # if text color is specified, use it
+        color = "color: " + textColor + ";"
+
+    # check if highlightColor is specified
+    if highlightColor is None:
+        # if highlight color is not specified, set to default
+        bgColor = "background-color: " + "yellow"
+    else:
+        # if highlightColor is specified, use it
+        bgColor = "background-color: " + highlightColor
+
+    ntk_ContMain += '<div style="' + color + bgColor + '">'
+
+def lightUpBlockE():
+    # End highlighting block
+    
+    global ntk_ContMain
+    
+    ntk_ContMain +A= "</div>"
