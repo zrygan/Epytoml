@@ -388,4 +388,6 @@ def lightUpBlockE():
     
     global ntk_ContMain
     
-    ntk_ContMain +A= "</div>"
+    ntk_ContMain += "</div>"
+
+def lightUp():
