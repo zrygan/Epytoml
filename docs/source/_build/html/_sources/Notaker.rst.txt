@@ -1,5 +1,5 @@
 Notaker
-=====
+======
 
 .. _Notaker:
 
@@ -38,3 +38,9 @@ Using Notaker
     EpyBake.bakePath(r"C:\...\yourDocumentFolder")
 
     EpyBake.ntkBake("yourDocumentName", ntk_ContWhole)
+
+View Notaker Functions
+=======================
+.. toctree::
+   usage
+   Notaker
