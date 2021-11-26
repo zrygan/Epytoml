@@ -125,7 +125,7 @@ def h(content):
     global ntk_ContMain
     ntk_ContMain += ntkHeader1
     ntk_ContMain += ntkID
-    
+
     return ntkHeader1
 
 
@@ -136,12 +136,14 @@ def hh(content):
 
     return ntkHeader2
 
+
 def h3(content):
     ntkHeader3 = "<h3>" + content + "</h3>\n"
     global ntk_ContMain
     ntk_ContMain += ntkHeader3
 
     return ntkHeader3
+
 
 def h4(content):
     ntkHeader4 = "<h4>" + content + "</h4>\n"
@@ -150,6 +152,7 @@ def h4(content):
 
     return ntkHeader4
 
+
 def h5(content):
     ntkHeader5 = "<h5>" + content + "</h5>\n"
     global ntk_ContMain
@@ -157,12 +160,14 @@ def h5(content):
 
     return ntkHeader5
 
+
 def h6(content):
     ntkHeader6 = "<h6>" + content + "</h6>\n"
     global ntk_ContMain
     ntk_ContMain += ntkHeader6
 
     return ntkHeader6
+
 
 def makeLink(headerNumber, content):
     # convert headerNumber to str, so it can be concatenated with ntkRefText
@@ -239,7 +244,7 @@ def t(content, emphasis=None):
 
     global ntk_ContMain
     ntk_ContMain += ntkP
-    
+
     return ntkP
 
 
@@ -266,7 +271,7 @@ def tL(content, emphasis=None):
 
     global ntk_ContMain
     ntk_ContMain += ntkP
-    
+
     return ntkP
 
 
@@ -369,9 +374,10 @@ def makeTitle(authorNames, date=None, dateFormat=None):
 
     ntk_ContMakeTitle = titleAuthor + titleDate
 
+
 def lightUpBlock(content, textColor=None, highlightColor=None):
     # highlight block text with given content
-    
+
     global ntk_ContMain
 
     # check if textColor is specified
@@ -381,7 +387,7 @@ def lightUpBlock(content, textColor=None, highlightColor=None):
     else:
         # if text color is specified, use it
         color = "color: " + textColor + ";"
-        
+
     # check if highlightColor is specified
     if highlightColor is None:
         # if highlight color is not specified, set to default
@@ -391,6 +397,7 @@ def lightUpBlock(content, textColor=None, highlightColor=None):
         bgColor = "background-color: " + highlightColor
 
     ntk_ContMain += '<div style="' + color + bgColor + '">' + content + "</div>"
+
 
 def lightUpBlockS(textColor=None, highlightColor=None):
     # start highlighting block
@@ -424,9 +431,10 @@ def lightUpBlockE():
 
     ntk_ContMain += "</div>"
 
+
 def lightUp(content, textColor=None, highlightColor=None):
     # highlight text with given content
-    
+
     global ntk_ContMain
 
     # check if textColor is specified
@@ -436,7 +444,7 @@ def lightUp(content, textColor=None, highlightColor=None):
     else:
         # if text color is specified, use it
         color = "color: " + textColor + ";"
-        
+
     # check if highlightColor is specified
     if highlightColor is None:
         # if highlight color is not specified, set to default
@@ -446,6 +454,7 @@ def lightUp(content, textColor=None, highlightColor=None):
         bgColor = "background-color: " + highlightColor
 
     ntk_ContMain += '<span style="' + color + bgColor + '">' + content + "</span>"
+
 
 def lightUpS(textColor=None, highlightColor=None):
     # start highlight text
@@ -481,5 +490,74 @@ def lightUpE():
     global ntk_ContMain
 
     ntk_ContMain += "</span>"
-    
-def note(content, noteType=None):
+
+
+def note(content, borderColor=None, textColor=None, autoHide=None, summaryText=None):
+    # create a note
+
+    # check if borderColor is specified
+    if borderColor is not None:
+        # if border color is specified, use it
+        borderStyle = "border-left: 5px solid " + borderColor + "; "
+    else:
+        # if border color is not specified, set to default (red)
+        borderStyle = "border-left: 5px solid red; "
+
+    # check if color is specified
+    if textColor is not None:
+        color = "color: " + textColor
+    else:
+        # if color is not specified, set to default
+        color = "color: black"
+
+    global ntk_ContMain
+
+    blockQuoteStart = '<blockquote style="' + borderStyle + color + '">'
+    blockQuoteEnd = "</blockquote>"
+
+    if autoHide == False:
+        # if autoHide is False, do not auto hide the note
+        ntk_ContMain += blockQuoteStart
+
+        ntk_ContMain += '<p style="margin-left: 10px">'
+
+        ntk_ContMain += content
+
+        ntk_ContMain += "</p>"
+
+        ntk_ContMain += blockQuoteEnd
+    elif autoHide == True:
+        # if autoHide is True, auto hide the note
+        
+        ntk_ContMain += "<details>"
+
+        # check if there is a summaryText specified
+        if summaryText is not None:
+            # if there is summaryText specified, use it
+            ntk_ContMain += "<summary>" + summaryText + "</summary>"
+        else:
+            # if there is no summaryText specified, use default
+            ntk_ContMain += "<summary>Notes:</summary>"
+
+        ntk_ContMain += blockQuoteStart
+
+        ntk_ContMain += '<p style="margin-left: 10px">'
+
+        ntk_ContMain += content
+
+        ntk_ContMain += "</p>"
+
+        ntk_ContMain += blockQuoteEnd
+
+        ntk_ContMain += "</details>"
+    else:
+        # if other input is given, use default
+        ntk_ContMain += blockQuoteStart
+
+        ntk_ContMain += '<p style="margin-left: 10px">'
+
+        ntk_ContMain += content
+
+        ntk_ContMain += "</p>"
+
+        ntk_ContMain += blockQuoteEnd
