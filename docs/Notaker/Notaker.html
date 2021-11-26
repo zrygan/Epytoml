@@ -1,0 +1,263 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Notaker &mdash; Epytoml 1.0.2 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/fonts.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="EpyBake" href="../EpyBake/EpyBake.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Epytoml
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../EpyBake/EpyBake.html">EpyBake</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Notaker</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#what-is-notaker">What is Notaker?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-notaker">Using Notaker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#notaker-syntax">Notaker Syntax</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Epytoml</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+<div class="git-ribbon">
+  <a href="http://github.com/SwissDataScienceCenter" rel="me">Join us on GitHub</a>
+</div>
+
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Notaker</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/Notaker/Notaker.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="notaker">
+<h1>Notaker<a class="headerlink" href="#notaker" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="what-is-notaker">
+<h2>What is Notaker?<a class="headerlink" href="#what-is-notaker" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">Notaker is an note-taking formatter for python.</div>
+<div class="line">Uses python syntax, and exports your Notaker document in html or pdf formats.</div>
+</div>
+</div>
+<div class="section" id="using-notaker">
+<h2>Using Notaker<a class="headerlink" href="#using-notaker" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">First import Notaker in your python file.</div>
+<div class="line">Also, import EpyBake in your python file.</div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">Epytoml.Notaker</span> <span class="kn">import</span> <span class="n">Notaker</span>
+<span class="kn">from</span> <span class="nn">Epytoml</span> <span class="kn">import</span> <span class="n">EpyBake</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Begin all Notaker documents with the following lines.</div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Notaker</span><span class="o">.</span><span class="n">ntkGen</span><span class="p">(</span><span class="s2">&quot;yourDocumentName&quot;</span><span class="p">)</span>
+
+<span class="n">Notaker</span><span class="o">.</span><span class="n">makeTitle</span><span class="p">(</span><span class="mi">1</span><span class="p">:[</span><span class="n">FirstName</span><span class="p">,</span> <span class="n">SurName</span><span class="p">]},</span> <span class="p">{</span><span class="s2">&quot;month&quot;</span><span class="p">:</span> <span class="s2">&quot;monthCreated&quot;</span><span class="p">,</span> <span class="s2">&quot;day&quot;</span><span class="p">:</span> <span class="s2">&quot;dayCreated&quot;</span><span class="p">,</span> <span class="s2">&quot;year&quot;</span><span class="p">:</span> <span class="s2">&quot;yearCreated&quot;</span><span class="p">})</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Remember to end all Notaker documents with the following lines.</div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">headerClass</span><span class="p">()</span><span class="o">.</span><span class="n">toc</span><span class="p">()</span>
+
+<span class="n">Notaker</span><span class="o">.</span><span class="n">ntkShut</span><span class="p">()</span>
+
+<span class="n">EpyBake</span><span class="o">.</span><span class="n">bakePath</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;C:\...\yourDocumentFolder&quot;</span><span class="p">)</span>
+
+<span class="n">EpyBake</span><span class="o">.</span><span class="n">ntkBake</span><span class="p">(</span><span class="s2">&quot;yourDocumentName&quot;</span><span class="p">,</span> <span class="n">ntk_ContWhole</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="notaker-syntax">
+<h2>Notaker Syntax<a class="headerlink" href="#notaker-syntax" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../EpyBake/EpyBake.html" class="btn btn-neutral float-left" title="EpyBake" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Z1aaan.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
