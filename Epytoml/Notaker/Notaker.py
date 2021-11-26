@@ -17,8 +17,6 @@ ntk_ContToc = ""
 ntk_ContMain = ""
 ntk_ContMakeTitle = ""
 
-# variable that counts how many header 1s are created
-ntk_headCount = 1
 
 # variable that collects all the headerCounts and their corresponding text in a key
 ntk_heads = {}
@@ -38,10 +36,7 @@ ntk_date = {"month": "", "day": "", "year": ""}
 
 def ntkGen(fileName):
     # ntkFile is the output of the Notaker, append all user inputs here.
-    global ntk_file
-    global ntk_fileName
-    ntk_fileName = fileName
-    ntk_file = fileName + ".html"
+    file = fileName + ".html"
 
     #'<title>fileName</title>\n'
     ntkTitle = "<title>" + fileName + "</title>\n"
@@ -112,21 +107,93 @@ def nl(value):
         ntk_ContMain += "<br> \n"
 
 
-def h(content):
-    # Make a header with the given text
-    ntkHeader1 = "<h1>" + content + "</h1>\n"
+class headerClass:
+    def __init__(self):
+        # variable that counts how many header 1s are created
+        self.headCount = 1
 
-    # Make a link id to the said header, to be used in the table of contents
-    ntkID = '<a id="' + content + '"></a>\n'
+    def h(self, content):
+        # Make a header with the given text
+        ntkHeader1 = "<h1>" + content + "</h1>\n"
 
-    # Add the header to the ntk_heads dictionary
-    ntk_heads[ntk_headCount] = ntkHeader1
+        # Add the header to the ntk_heads dictionary
+        ntk_heads[self.headCount] = ntkHeader1
 
-    global ntk_ContMain
-    ntk_ContMain += ntkHeader1
-    ntk_ContMain += ntkID
+        global ntk_ContMain
+        ntk_ContMain += ntkHeader1
 
-    return ntkHeader1
+        return ntkHeader1
+
+    def makeLink(self, content, autoFormat=None):
+        # convert headerNumber to str, so it can be concatenated with ntkRefText
+        headerNumberStr = str(self.headCount)
+
+        if autoFormat is None:
+            # when no autoFormat is given, use defualt or autoFormat = True
+            ntkRefText = "Chapter " + headerNumberStr + ": " + content
+        else:
+            if autoFormat == True:
+                ntkRefText = "Chapter " + headerNumberStr + ": " + content
+            elif autoFormat == False:
+                ntkRefText = content
+            else:
+                # when autoFormat is given but input not found, use defualt or autoFormat = True
+                ntkRefText = "Chapter " + headerNumberStr + ": " + content
+
+        ntkRef = '<a href="#' + content + '">' + ntkRefText + "</a><br>\n"
+
+        ntk_links[self.headCount] = ntkRef
+
+        return ntkRef
+
+    def makeId(self, content):
+        global ntk_ContMain
+        # Make a link id to the said header, to be used in the table of contents
+        ntkID = '<a id="' + content + '"></a>\n'
+
+        ntk_ContMain += ntkID
+
+        return ntkID
+
+    def headCountAdd(self):
+        # increment the headerCount by 1
+        self.headCount += 1
+
+    def toc(self, size=None):
+        # make a table of contents
+
+        headerValStart = "<h1>"
+        headerValEnd = "</h1>"
+
+        # make size=none to make it default to the header 1 size, unless specified
+        if size is None or size == 1:
+            headerValStart = "<h1>"
+            headerValEnd = "</h1>"
+        else:
+            if size == 2:
+                headerValStart = "<h2>"
+                headerValEnd = "</h2>"
+            elif size == 3:
+                headerValStart = "<h3>"
+                headerValEnd = "</h3>"
+            elif size == 4:
+                headerValStart = "<h4>"
+                headerValStart = "</h4>"
+            else:
+                # if input not found then set to default
+                headerValStart = "<h1>"
+                headerValEnd = "</h1>"
+
+        global ntk_ContToc
+
+        tocTitle = headerValStart + "<b>Table of Contents</b>" + headerValEnd + "\n"
+
+        ntk_ContToc += tocTitle
+
+        for header in range(1, self.headCount):
+            linkTitle = ntk_links[header]
+            linkTitle += "\n"
+            ntk_ContToc += linkTitle
 
 
 def hh(content):
@@ -167,58 +234,6 @@ def h6(content):
     ntk_ContMain += ntkHeader6
 
     return ntkHeader6
-
-
-def makeLink(headerNumber, content):
-    # convert headerNumber to str, so it can be concatenated with ntkRefText
-    headerNumberStr = str(headerNumber)
-
-    ntkRefText = "Chapter " + headerNumberStr + ": " + content
-    ntkRef = '<a href="#' + content + '">' + ntkRefText + "</a><br>\n"
-
-    ntk_links[headerNumber] = ntkRef
-
-    # append 1 to ntk_headCount
-    global ntk_headCount
-    ntk_headCount += 1
-
-
-def toc(size=None):
-    # make a table of contents
-
-    headerValStart = "<h1>"
-    headerValEnd = "</h1>"
-
-    # make size=none to make it default to the header 1 size, unless specified
-    if size is None or size == 1:
-        headerValStart = "<h1>"
-        headerValEnd = "</h1>"
-    else:
-        if size == 2:
-            headerValStart = "<h2>"
-            headerValEnd = "</h2>"
-        elif size == 3:
-            headerValStart = "<h3>"
-            headerValEnd = "</h3>"
-        elif size == 4:
-            headerValStart = "<h4>"
-            headerValStart = "</h4>"
-        else:
-            # if input not found then set to default
-            headerValStart = "<h1>"
-            headerValEnd = "</h1>"
-
-    global ntk_ContToc
-
-    tocTitle = headerValStart + "<b>Table of Contents</b>" + headerValEnd + "\n"
-
-    ntk_ContToc += tocTitle
-
-    global ntk_headCount
-    for header in range(1, ntk_headCount):
-        linkTitle = ntk_links[header]
-        linkTitle += "\n"
-        ntk_ContToc += linkTitle
 
 
 def t(content, emphasis=None):
@@ -528,7 +543,7 @@ def note(content, borderColor=None, textColor=None, autoHide=None, summaryText=N
         ntk_ContMain += blockQuoteEnd
     elif autoHide == True:
         # if autoHide is True, auto hide the note
-        
+
         ntk_ContMain += "<details>"
 
         # check if there is a summaryText specified
