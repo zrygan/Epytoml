@@ -5,7 +5,7 @@ import sys
 #  EpyBake path
 sys.path.insert(
     0,
-    os.path.abspath(r"...\Epytoml\Epytoml"),
+    os.path.abspath(r"...\Epytoml\Epytoml\EpyBake"),
 )
 
 # Notaker path

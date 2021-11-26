@@ -14,7 +14,7 @@ ntk_ContWhole = ""
 # these variables are the variables for the Notaker file being created
 # _toc and _main are separated because _toc has to come first but the headers must be complete once it is generated
 ntk_ContGen = ""
-"""Stores all the created text by the contGen function.
+"""
 """
 
 ntk_ContShut = ""

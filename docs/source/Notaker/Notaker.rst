@@ -41,8 +41,6 @@ Using Notaker
 
 Notaker Syntax
 --------------
-.. autofunction:: Notaker.ntkGen
-
 .. autofunction:: Notaker.ntkShut
 
 .. autofunction:: Notaker.nl 

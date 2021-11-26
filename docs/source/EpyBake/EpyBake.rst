@@ -20,8 +20,8 @@ Using EpyBake
 EpyBake Syntax
 ---------------
 
-.. autofunction:: bakePath
+.. autofunction:: EpyBake.bakePath
 
-.. autofunction:: ntkBake
+\\
 
 
