@@ -61,12 +61,12 @@ System requirements:
   > from Epytoml import EpyBake
   > from Epytoml.Notaker import Notaker
   >
-  > Notaker.ntkGen("Foo")
+  > Notaker.ntkGen(FILENAME)
   > >>
   > >>
   > >>
-  > Notaker.ntkShut("Bar")
-  > EpyBake.ntkBake("Baz", Notaker.ntk_ContWhole)
+  > Notaker.ntkShut()
+  > EpyBake.ntkBake(FILENAME, Notaker.ntk_ContWhole)
   > ```
 
 ## License
