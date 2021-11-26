@@ -358,6 +358,28 @@ def makeTitle(authorNames, date=None, dateFormat=None):
 
     ntk_ContMakeTitle = titleAuthor + titleDate
 
+def lightUpBlock(content, textColor=None, highlightColor=None):
+    # highlight block text with given content
+    
+    global ntk_ContMain
+
+    # check if textColor is specified
+    if textColor is None:
+        # if text color is not specified, set to default
+        color = "color: " + "black" + ";"
+    else:
+        # if text color is specified, use it
+        color = "color: " + textColor + ";"
+        
+    # check if highlightColor is specified
+    if highlightColor is None:
+        # if highlight color is not specified, set to default
+        bgColor = "background-color: " + "yellow"
+    else:
+        # if highlightColor is specified, use it
+        bgColor = "background-color: " + highlightColor
+
+    ntk_ContMain += '<div style="' + color + bgColor + '">' + content + "</div>"
 
 def lightUpBlockS(textColor=None, highlightColor=None):
     # start highlighting block
@@ -391,9 +413,32 @@ def lightUpBlockE():
 
     ntk_ContMain += "</div>"
 
+def lightUp(content, textColor=None, highlightColor=None):
+    # highlight text with given content
+    
+    global ntk_ContMain
+
+    # check if textColor is specified
+    if textColor is None:
+        # if text color is not specified, set to default
+        color = "color: " + "black" + ";"
+    else:
+        # if text color is specified, use it
+        color = "color: " + textColor + ";"
+        
+    # check if highlightColor is specified
+    if highlightColor is None:
+        # if highlight color is not specified, set to default
+        bgColor = "background-color: " + "yellow"
+    else:
+        # if highlightColor is specified, use it
+        bgColor = "background-color: " + highlightColor
+
+    ntk_ContMain += '<span style="' + color + bgColor + '">' + content + "</span>"
 
 def lightUpS(textColor=None, highlightColor=None):
     # start highlight text
+    # highlight text without given content
     # the difference between `lightUp` and `lightUpBlock`:
     # `lightUp` uses span tags to highlight the text, same line
     # `lightUpBlock` uses div tags to highlight the text, new line
@@ -425,3 +470,5 @@ def lightUpE():
     global ntk_ContMain
 
     ntk_ContMain += "</span>"
+    
+def note(content, noteType=None):
