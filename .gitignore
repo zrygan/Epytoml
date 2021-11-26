@@ -2,3 +2,5 @@
 /dist
 /build
 /Epytoml.egg-info
+/Epytoml/__pycache__/
+/Epytoml/Notaker/__pycache__/
