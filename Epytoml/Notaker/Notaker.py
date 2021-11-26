@@ -125,6 +125,8 @@ def h(content):
     global ntk_ContMain
     ntk_ContMain += ntkHeader1
     ntk_ContMain += ntkID
+    
+    return ntkHeader1
 
 
 def hh(content):
@@ -132,30 +134,35 @@ def hh(content):
     global ntk_ContMain
     ntk_ContMain += ntkHeader2
 
+    return ntkHeader2
 
 def h3(content):
     ntkHeader3 = "<h3>" + content + "</h3>\n"
     global ntk_ContMain
     ntk_ContMain += ntkHeader3
 
+    return ntkHeader3
 
 def h4(content):
     ntkHeader4 = "<h4>" + content + "</h4>\n"
     global ntk_ContMain
     ntk_ContMain += ntkHeader4
 
+    return ntkHeader4
 
 def h5(content):
     ntkHeader5 = "<h5>" + content + "</h5>\n"
     global ntk_ContMain
     ntk_ContMain += ntkHeader5
 
+    return ntkHeader5
 
 def h6(content):
     ntkHeader6 = "<h6>" + content + "</h6>\n"
     global ntk_ContMain
     ntk_ContMain += ntkHeader6
 
+    return ntkHeader6
 
 def makeLink(headerNumber, content):
     # convert headerNumber to str, so it can be concatenated with ntkRefText
