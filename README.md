@@ -26,9 +26,17 @@ License: <a href="https://github.com/Z1aaan/Epytoml/blob/master/LICENSE.md">MIT 
 
 ## Installation
 
-### `pip install Epytoml`
+### pip Install
 
-System requirements:
+#### `pip install Epytoml`
+
+### pip Install `requirements.txt`
+
+#### 1. `cd C:\...\Epytoml`
+
+#### 2. `pip install -r requirements.txt`
+
+### System requirements:
 
 - <a href="https://www.python.org/">Python 3.9 or higher</a>
 - <a href="https://wkhtmltopdf.org">wkhtmltopdf</a>
