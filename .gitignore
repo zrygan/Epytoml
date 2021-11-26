@@ -8,6 +8,5 @@
 /test.py
 /test.html
 /.venv/
-/docs/build/doctrees/
-/docs/build/html/
+/docs/build/
 /format.rst
