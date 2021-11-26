@@ -4,9 +4,18 @@
 import os.path as path
 import os
 import pdfkit
+from Epytoml.Notaker import Notaker
 
 
 def bakePath(directory):
+    """Automatically format the directory to make it python-readable.
+
+    Args:
+        directory (str): The specific directory where you want EpyBake to export the files.
+
+    Returns:
+        The formatted, python-readable directory path.
+    """
     # this function fixes the given directory path of the user
     finalDirectory = ""
     # duplicate \ of the directory
@@ -19,9 +28,18 @@ def bakePath(directory):
     # join the directory with the filename
     return directory
 
-def ntkBake(fileName, content, exportTo=None, directory=None):
-    fileNameType = fileName + ".html"
+def ntkBake(fileName, exportTo=None, directory=None):
+    """[summary]
 
+    Args:
+        fileName ([type]): [description]
+        exportTo ([type], optional): [description]. Defaults to None.
+        directory ([type], optional): [description]. Defaults to None.
+    """
+    
+    content = Notaker.ntk_ContWhole
+    fileNameType = fileName + ".html"
+    
     if directory is None or directory == 0:
         fileNameTypePDF = fileName + ".pdf"
 
