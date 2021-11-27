@@ -8,6 +8,7 @@ Uses python syntax, and exports your Notaker document in html or pdf formats.
 """
 
 from datetime import date as dt
+import re
 
 # REMEMBER: Change version number in ntkGen() function
 # REMEMBER: To add a '\n' at the end of each line that is appended in the ntkTitleHead
@@ -852,7 +853,9 @@ class shortcutsClass:
             shortcutValue = self.shortcutList[key][1]
 
             # check if the shortcut address is in the content then replace the key with the value
-            ntk_ContMain = ntk_ContMain.replace(shortcutAddress, shortcutValue)
+            addMatchWord = r"\b" + shortcutAddress + r"\b"
+
+            ntk_ContMain = re.sub(addMatchWord, shortcutValue, ntk_ContMain)
 
 
 class automationClass:
