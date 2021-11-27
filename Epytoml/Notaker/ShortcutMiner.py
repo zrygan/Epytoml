@@ -51,7 +51,7 @@ def mineText(content, shortcutCount, address):
         del initialMined_Shortcuts[key]
 
     # assign the address to the mined shortcuts
-    for key in range(1, len(mined_Shortcuts)):
+    for key in range(1, len(mined_Shortcuts) + 1):
         finalAddress = address + str(key)
         mined_Shortcuts[key][0] = finalAddress
 
