@@ -14,7 +14,7 @@ DESCRIPTION = "A python package that converts plain text into a specified markup
 LONG_DESCRIPTION = (HERE / "README.md").read_text()
 LONG_DESC_TYPE = "text/markdown"
 
-INSTALL_REQUIRES = ['pdfkit']
+INSTALL_REQUIRES = ['pdfkit', 'lorem,']
 
 setup(
     name=PACKAGE_NAME,

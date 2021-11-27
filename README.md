@@ -41,6 +41,7 @@ License: <a href="https://github.com/Z1aaan/Epytoml/blob/master/LICENSE.md">MIT 
 - <a href="https://www.python.org/">Python 3.9 or higher</a>
 - <a href="https://wkhtmltopdf.org">wkhtmltopdf</a>
 - <a href="https://pdfkit.org">PDFKit</a>
+- <a href="https://pypi.org/project/lorem/">lorem</a>
 
 ## Using Epytoml
 
