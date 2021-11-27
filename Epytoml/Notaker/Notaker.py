@@ -1,5 +1,11 @@
-# Epytomil, Notaker
-# Created by: Zhean Ganituen
+"""
+Notaker
+An Epytoml module
+Created by: Zhean 'Z1aaan' Ganituen
+
+Notaker is an note-taking formatter for python.
+Uses python syntax, and exports your Notaker document in html or pdf formats.
+"""
 
 from datetime import date as dt
 
@@ -732,7 +738,7 @@ def note(content, borderColor=None, textColor=None, autoHide=None, summaryText=N
 
 
 class shortcutsClass:
-    """Contains all the function needed for Notaker shortcuts"""
+    """Contains all the function needed for Notaker shortcuts."""
 
     def __init__(self):
         # count how many shortcuts are there

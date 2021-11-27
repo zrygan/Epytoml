@@ -1,5 +1,11 @@
-# Epytomil, EpyBake
-# Created by: Zhean Ganituen
+"""
+EpyBake
+An Epytomil module
+Created by: Zhean 'Z1aaan' Ganituen
+
+EpyBake is one of the most important modules of Epytoml.
+Used for exporting the Epytoml created files to the supported markup languages or pdf.
+"""
 
 import os.path as path
 import os
@@ -85,9 +91,3 @@ def ntkBake(fileName, exportTo=None, directory=None):
                 with open(completeFileName, "w") as f:
                     f.write(content)
                 pdfkit.from_file(completeFileName, completeFileNamePDF)
-
- 
-    
-    
-   
-    
