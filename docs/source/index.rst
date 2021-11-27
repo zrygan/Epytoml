@@ -21,7 +21,9 @@ Contents
 --------
 
 .. toctree::
-   usage
+   Usage
    EpyBake/EpyBake
    Notaker/Notaker
+   Notaker/Sample - Notaker
+
 

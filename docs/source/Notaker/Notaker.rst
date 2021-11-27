@@ -41,60 +41,257 @@ Using Notaker
 
 Notaker Syntax
 --------------
-.. autofunction:: Notaker.ntkShut
 
-.. autofunction:: Notaker.nl 
+**ntkGen(fileName)**::
 
-.. autoclass:: Notaker.headerClass
+    Writes all the document type declaration, html document start, html head, and html body.
+    
+    Args:
+        fileName (str): This is will be the file name of your document.
 
-.. autofunction:: Notaker.headerClass.h
+**ntkShut()**::
+    
+    Writes html document end, and html head end. Always end your Epytoml code with this.
 
-.. autofunction:: Notaker.headerClass.makeLink
+**nl(lines=None)**::
 
-.. autofunction:: Notaker.headerClass.makeId
+    Creates one or multiple line breaks.
+    
+    Args:
+        lines (int): Specifies how many line breaks are to be created, if lines is not given a value, this function will only create one line.
 
-.. autofunction:: Notaker.headerClass.headCountAdd
+**nl(lines=None)**::
 
-.. autofunction:: Notaker.headerClass.toc
+    Creates one or multiple line breaks.
+    
+    Args:
+        lines (int): Specifies how many line breaks are to be created, if lines is not given a value, this function will only create one line.
 
-.. autofunction:: Notaker.hh
+**headerClass**::
 
-.. autofunction:: Notaker.h3
+    Contains all the functions needed in creating main headers (h1), creating hyperlinks and hyperlink ids, and adding the table of contents.
 
-.. autofunction:: Notaker.h4
+**headerClass().h(self, content)**::
 
-.. autofunction:: Notaker.h5
+    Creates a main header (or h1 in html).
+    
+    Args:
+        content (str): This is the text the header will display.
+    
+    Returns:
+        This returns the complete (formatted) main header in html format.
 
-.. autofunction:: Notaker.h6
+**headerClass().makeLink(self, content, autoFormat=None)**::
 
-.. autofunction:: Notaker.t
+    Creates a hyperlink, to be used in the toc function.
+    
+    Args:
+        content (str): This will be set as the hyperlink URL address.
+        autoFormat (bool, optional): The makeLink function automatically adds 'Chapter N:' before the content. Defaults to True.
+    
+    Returns:
+        This returns the complete (formatted) hyperlink in html format.
 
-.. autofunction:: Notaker.t
+**headerClass().makeId(self, content)**::
 
-.. autofunction:: Notaker.makeTitle
+    Creates an id attribute. Always add this function every h function call.
+    
+    Args:
+        content (str): This will be set as the hyperlink URL address.
+    
+    Returns:
+        This returns the complete (formatted) id in html format.
 
-.. autofunction:: Notaker.lightUpBlock
+**headerClass().headCountAdd(self)**::    
 
-.. autofunction:: Notaker.lightUpBlockS
+    Increments the ntk_heads variable.
 
-.. autofunction:: Notaker.lightUpBlockE
+**headerClass().toc(self, size=None)**::
 
-.. autofunction:: Notaker.lightUp
+    Creates the table of contents.
+    
+    Args:
+        size (int, optional): This is the size of the table of contents. Defaults to None.
+    
+**hh(content)**::
 
-.. autofunction:: Notaker.lightUpS
+    Creates a 2nd subheader (or h2 in html).
+    
+    Args:
+        content (str): This is the text the header will display.
+    
+    Returns:
+        This returns the complete (formatted) main header in html format.
 
-.. autofunction:: Notaker.lightUpE
+**h3(content)**::
 
-.. autofunction:: Notaker.note
+    Creates a 3rd subheader (or h3 in html).
+    
+    Args:
+        content (str): This is the text the header will display.
+    
+    Returns:
+        This returns the complete (formatted) main header in html format.
 
-.. autoclass:: Notaker.shortcutsClass
+**h4(content)**::
 
-.. autofunction:: Notaker.shortcutsClass.addShortcut
+    Creates a 4th subheader (or h4 in html).
+    
+    Args:
+        content (str): This is the text the header will display.
+    
+    Returns:
+        This returns the complete (formatted) main header in html format.
 
-.. autofunction::: Notaker.shortcutsClass.mergeShortcut
+**h5(content)**::
 
-.. autofunction:: Notaker.shortcutsClass.viewShortcut
+    Creates a 5th subheader (or h5 in html).
+    
+    Args:
+        content (str): This is the text the header will display.
+    
+    Returns:
+        This returns the complete (formatted) main header in html format.
 
-.. autofunction:: Notaker.shortcutsClass.viewRangeShortcut
+**h6(content)**::
 
-.. autofunction:: Notaker.shortcutsClass.readMain
+    Creates a 6th subheader (or h6 in html).
+    
+    Args:
+        content (str): This is the text the header will display.
+    
+    Returns:
+        This returns the complete (formatted) main header in html format.
+
+**t(content, emphasis=None)**::
+
+    Creates normal text in the Notaker document (or p in html).
+    
+    Args:
+        content (str): This is the text the t function will display.
+        emphasis (str, optional): Adds text emphasis to the content. Defaults to None.
+    
+    Returns:
+        This returns the complete (formatted) text in html format.
+
+**tL(content, emphasis=None)**::
+    
+    Creates normal text and a new line at the bottom in the Notaker document.
+    
+    Args:
+        content (str): This is the text the tL function will display.
+        emphasis (str, optional): Adds text emphasis to the content. Defaults to None.
+    
+    Returns:
+        This returns the complete (formatted) text in html format.
+
+**makeTitle(authorNames, date=None, dateFormat=None)**::
+
+    Adds a title section in the Notaker document.
+    
+    Args:
+        authorNames (dict): The author/s of the Notaker document as a dict, {1: ["FirstName_N", "Surname_N"] ... }.
+        date (dict, optional): The creation date the Notaker document, {"month": "", "day": "", "year": ""}. Defaults to None.
+        dateFormat (int, optional): Specifies what date format will be used. Defaults to year-month date format.
+
+**lightUpBlock(content, textColor=None, highlightColor=None)**::
+
+    Creates a highlighted text block. That automatically opens and closes.
+    
+    Args:
+        content (str): This is the text displayed in the highlighted text block.
+        textColor (str, optional): Specifies the font color. Defaults to black.
+        highlightColor (str, optional): Specifies the highlight color. Defaults to yellow.
+
+**lightUpBlockS(textColor=None, highlightColor=None)**::
+
+    Opens a highlighted text block. That does not close immediately.
+    
+    Args:
+        textColor (str, optional): Specifies the font color. Defaults to black.
+        highlightColor (str, optional): Specifies the highlight color. Defaults to yellow.
+
+**lightUpBlockE()**::
+
+    Closes the highlighted text box created.
+
+**lightUp(content, textColor=None, highlightColor=None)**::
+
+    Highlights text
+    
+    Args:
+        content (str): This is the text displayed with highlight.
+        textColor (str, optional): Specifies the font color. Defaults to black.
+        highlightColor (str, optional): Specifies the highlight color. Defaults to yellow.
+
+**note(content, borderColor=None, textColor=None, autoHide=None, summaryText=None)**::
+
+    Creates a blockquote
+    
+    Args:
+    
+        content (str): This is the text displayed in the highlighted text block.
+        borderColor (str, optional): Specified the blockquote left border color. Defaults to red.
+        textColor (str, optional): Specifies the font color. Defaults to black.
+        autoHide (bool, optional): Wraps the blockquote in a togglable show and hide switch. Defaults to False.
+        summaryText (str, optional): This is the text displayed when the blockquote toggle is set to hide. Defaults to 'Notes:' .
+    
+    Returns:
+        This returns the complete (formatted) note in html format.
+
+**shortcutsClass**::
+
+    Contains all the function needed for Notaker shortcuts.
+
+**shortcutsClass().addShortcut(self, address, value)**::
+
+    Add a shortcut to the shortcut dictionary
+    
+    Args:
+        address (str): The address (!, @, $) of the shortcut.
+        value (str): The value of the shortcut.
+
+**shortcutsClass().mergeShortcut(self, dictionary)**::
+
+    Merge the shortcut dictionary with an existing dictionary.
+    
+    Args:
+        dictionary (dict): The dictionary that will be merged with the shortcut dictionary.
+
+**shortcutsClass().viewShortcut(self, printList=None, key=None)**::
+
+    Returns the shortcut dictionary.
+    
+    Args:
+        printList (bool, optional): Prints shortcut dictionary. Defaults to False.
+        key (str, optional): Specifies what shortcut will be returned. Defaults to None.
+    
+    Returns:
+        The shortcut dictionary.
+
+**shortcutsClass().viewRangeShortcut(self, rangeMin, rangeMax, printList=None)**::
+    
+    Returns a range of keys requested in the shortcut dictionary.
+    
+    Args:
+        rangeMin (str): The lowest key value requested.
+        rangeMax (str): The highest key value requested.
+        printList (bool, optional): Prints the range requested in the shortcut dictionary. Defaults to False.
+    
+    Returns:
+        The range of shortcut dictionary
+
+**shortcutsClass().readMain(self)**::
+    
+    Reads the ntk_ContMain variable and replaces all shortcuts used with their corresponding value.
+
+**automationClass**::
+    
+    Automatically creates the hyperlink reference, id attribute, and increments the ntk_headCount variable.
+
+**automationClass().autoLink(self, content)**::
+    
+    Automatically creates the hyperlink reference, id attribute, and increments the ntk_headCount variable.
+    
+    Args:
+        content (str): This will be set as the hyperlink URL address.
