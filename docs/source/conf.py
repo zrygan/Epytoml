@@ -1,20 +1,3 @@
-import os
-import sys
-
-
-#  EpyBake path
-sys.path.insert(
-    0,
-    os.path.abspath(r"...\Epytoml\Epytoml\EpyBake"),
-)
-
-# Notaker path
-sys.path.insert(
-    0,
-    os.path.abspath(r"...\Epytoml\Epytoml\Notaker"),
-)
-
-
 # information
 
 project = "Epytoml"
