@@ -140,4 +140,4 @@ def horiLine(lineLength, lineWidth=None, lineCharacter=None, printOut=None):
             print(meaningless_text)
         # print out is not none and is false so only return the generated text.
 
-    return lineGenerated
+    return meaningless_text
