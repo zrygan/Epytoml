@@ -85,3 +85,9 @@ def ntkBake(fileName, exportTo=None, directory=None):
                 with open(completeFileName, "w") as f:
                     f.write(content)
                 pdfkit.from_file(completeFileName, completeFileNamePDF)
+
+ 
+    
+    
+   
+    
