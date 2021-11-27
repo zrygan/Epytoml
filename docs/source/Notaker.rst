@@ -11,13 +11,11 @@ What is Notaker?
 Using Notaker
 -------------
 
-| First import Notaker in your python file.
-| Also, import EpyBake in your python file.
+| First importing Notaker
 
 .. code-block:: python
 
     from Epytoml.Notaker import Notaker
-    from Epytoml import EpyBake
 
 | Begin all Notaker documents with the following lines.
 
@@ -34,10 +32,6 @@ Using Notaker
     headerClass().toc()
 
     Notaker.ntkShut()
-
-    EpyBake.bakePath(r"C:\...\yourDocumentFolder")
-
-    EpyBake.ntkBake("yourDocumentName", ntk_ContWhole)
 
 Notaker Syntax
 --------------
@@ -248,7 +242,7 @@ Notaker Syntax
     Add a shortcut to the shortcut dictionary
     
     Args:
-        address (str): The address (!, @, $) of the shortcut.
+        address (str): The address (@, $, `!,`@, `$) of the shortcut.
         value (str): The value of the shortcut.
 
 **shortcutsClass().mergeShortcut(self, dictionary)**::

@@ -11,11 +11,25 @@ What is EpyBake?
 Using EpyBake
 -------------
 
-| Import EpyBake in your python file.
+| Importing EpyBake
 
 .. code-block:: python
 
     from Epytoml import EpyBake
+
+
+Baking your Epytoml python file
+--------------------------------
+| Use the specific bake function for exporting, in this example a Notaker python file is exported. Therefore, `ntkBake()` is used.
+
+.. code-block:: python
+
+    from Epytoml import EpyBake
+    from Epytoml.Notaker import Notaker
+
+    Foo 
+
+    EpyBake.ntkBake("fileName")
 
 EpyBake Syntax
 ---------------
