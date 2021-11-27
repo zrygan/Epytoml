@@ -102,7 +102,7 @@ def horiLine(lineLength, lineWidth=None, lineCharacter=None, printOut=None):
         printOut (bool, optional): Print out the generated dummy text. Defaults to False.
 
     Returns:
-        The randomly generated dummy text.
+        The horizontal line created.
     """
     meaningless_text = ""
     lineGenerated = ""
