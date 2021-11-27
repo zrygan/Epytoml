@@ -123,11 +123,11 @@ def horiLine(lineLength, lineWidth=None, lineCharacter=None, printOut=None):
         # if line character is not none, then use the user specified character
         character = lineCharacter
 
-    for i in range(lineWidth):
+    for i in range(width):
         # generate a line
         for char in range(lineLength):
             lineGenerated += character
-        if lineWidth > 1:
+        if width > 1:
             # if line width is greater than 1, append a new line character
             lineGenerated += "\n"
 
