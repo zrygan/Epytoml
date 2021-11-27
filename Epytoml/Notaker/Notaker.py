@@ -58,6 +58,10 @@ ntk_date = {"month": "", "day": "", "year": ""}
 """Stores the date the Notaker file was created.
 """
 
+ntk_headCount = 1
+"""Stores the total number of headers created.
+"""
+
 
 def ntkGen(fileName):
     """Writes all the document type declaration, html document start, html head, and html body.
@@ -153,7 +157,7 @@ class headerClass:
 
     def __init__(self):
         # variable that counts how many header 1s are created
-        self.headCount = 1
+        ntk_headCount = 1
 
     def h(self, content):
         """Creates a main header (or h1 in html).
@@ -168,7 +172,7 @@ class headerClass:
         ntkHeader1 = "<h1>" + content + "</h1>\n"
 
         # Add the header to the ntk_heads dictionary
-        ntk_heads[self.headCount] = ntkHeader1
+        ntk_heads[ntk_headCount] = ntkHeader1
 
         global ntk_ContMain
         ntk_ContMain += ntkHeader1
@@ -179,14 +183,14 @@ class headerClass:
         """Creates a hyperlink, to be used in the toc function.
 
         Args:
-            content (str): This will be set as the hyperlink URL address. Always use the same content as the makeId function that precedes the makeLink function.
+            content (str): This will be set as the hyperlink URL address.
             autoFormat (bool, optional): The makeLink function automatically adds 'Chapter N:' before the content. Defaults to True.
 
         Returns:
             This returns the complete (formatted) hyperlink in html format.
         """
         # convert headerNumber to str, so it can be concatenated with ntkRefText
-        headerNumberStr = str(self.headCount)
+        headerNumberStr = str(ntk_headCount)
 
         if autoFormat is None:
             # when no autoFormat is given, use defualt or autoFormat = True
@@ -202,7 +206,7 @@ class headerClass:
 
         ntkRef = '<a href="#' + content + '">' + ntkRefText + "</a><br>\n"
 
-        ntk_links[self.headCount] = ntkRef
+        ntk_links[ntk_headCount] = ntkRef
 
         return ntkRef
 
@@ -226,7 +230,8 @@ class headerClass:
     def headCountAdd(self):
         """Increments the ntk_heads variable."""
         # increment the headerCount by 1
-        self.headCount += 1
+        global ntk_headCount
+        ntk_headCount += 1
 
     def toc(self, size=None):
         """Creates the table of contents after the title of the Notaker document.
@@ -264,7 +269,7 @@ class headerClass:
 
         ntk_ContToc += tocTitle
 
-        for header in range(1, self.headCount):
+        for header in range(1, ntk_headCount):
             linkTitle = ntk_links[header]
             linkTitle += "\n"
             ntk_ContToc += linkTitle
@@ -633,49 +638,6 @@ def lightUp(content, textColor=None, highlightColor=None):
     ntk_ContMain += '<span style="' + color + bgColor + '">' + content + "</span>"
 
 
-def lightUpS(textColor=None, highlightColor=None):
-    """Opens text highlighting.
-
-    Args:
-        textColor (str, optional): Specifies the font color. Defaults to black.
-        highlightColor (str, optional): Specifies the highlight color. Defaults to yellow.
-    """
-    # start highlight text
-    # highlight text without given content
-    # the difference between `lightUp` and `lightUpBlock`:
-    # `lightUp` uses span tags to highlight the text, same line
-    # `lightUpBlock` uses div tags to highlight the text, new line
-
-    global ntk_ContMain
-
-    # check if textColor is specified
-    if textColor is None:
-        # if text color is not specified, set to default
-        color = "color: " + "black" + ";"
-    else:
-        # if text color is specified, use it
-        color = "color: " + textColor + ";"
-
-    # check if highlightColor is specified
-    if highlightColor is None:
-        # if highlight color is not specified, set to default
-        bgColor = "background-color: " + "yellow"
-    else:
-        # if highlightColor is specified, use it
-        bgColor = "background-color: " + highlightColor
-
-    ntk_ContMain += '<span style="' + color + bgColor + '">'
-
-
-def lightUpE():
-    """Closes opened text highlighting."""
-    # End highlighting block
-
-    global ntk_ContMain
-
-    ntk_ContMain += "</span>"
-
-
 def note(content, borderColor=None, textColor=None, autoHide=None, summaryText=None):
     """Creates a blockquote
 
@@ -686,8 +648,12 @@ def note(content, borderColor=None, textColor=None, autoHide=None, summaryText=N
         textColor (str, optional): Specifies the font color. Defaults to black.
         autoHide (bool, optional): Wraps the blockquote in a togglable show and hide switch. Defaults to False.
         summaryText (str, optional): This is the text displayed when the blockquote toggle is set to hide. Defaults to 'Notes:' .
+
+    Returns:
+        This returns the complete (formatted) note in html format.
     """
     # create a note
+    noteContent = ""
 
     # check if borderColor is specified
     if borderColor is not None:
@@ -711,50 +677,58 @@ def note(content, borderColor=None, textColor=None, autoHide=None, summaryText=N
 
     if autoHide == False:
         # if autoHide is False, do not auto hide the note
-        ntk_ContMain += blockQuoteStart
+        noteContent += blockQuoteStart
 
-        ntk_ContMain += '<p style="margin-left: 10px">'
+        noteContent += '<p style="margin-left: 10px">'
 
-        ntk_ContMain += content
+        noteContent += content
 
-        ntk_ContMain += "</p>"
+        noteContent += "</p>"
 
-        ntk_ContMain += blockQuoteEnd
+        noteContent += blockQuoteEnd
+
+        ntk_ContMain += noteContent
     elif autoHide == True:
         # if autoHide is True, auto hide the note
 
-        ntk_ContMain += "<details>"
+        noteContent += "<details>"
 
         # check if there is a summaryText specified
         if summaryText is not None:
             # if there is summaryText specified, use it
-            ntk_ContMain += "<summary>" + summaryText + "</summary>"
+            noteContent += "<summary>" + summaryText + "</summary>"
         else:
             # if there is no summaryText specified, use default
-            ntk_ContMain += "<summary>Notes:</summary>"
+            noteContent += "<summary>Notes:</summary>"
 
-        ntk_ContMain += blockQuoteStart
+        noteContent += blockQuoteStart
 
-        ntk_ContMain += '<p style="margin-left: 10px">'
+        noteContent += '<p style="margin-left: 10px">'
 
-        ntk_ContMain += content
+        noteContent += content
 
-        ntk_ContMain += "</p>"
+        noteContent += "</p>"
 
-        ntk_ContMain += blockQuoteEnd
+        noteContent += blockQuoteEnd
 
-        ntk_ContMain += "</details>"
+        noteContent += "</details>"
+
+        ntk_ContMain += noteContent
     else:
         # if other input is given, use default
-        ntk_ContMain += blockQuoteStart
+        noteContent += blockQuoteStart
 
-        ntk_ContMain += '<p style="margin-left: 10px">'
+        noteContent += '<p style="margin-left: 10px">'
 
-        ntk_ContMain += content
+        noteContent += content
 
-        ntk_ContMain += "</p>"
+        noteContent += "</p>"
 
-        ntk_ContMain += blockQuoteEnd
+        noteContent += blockQuoteEnd
+
+        ntk_ContMain += noteContent
+
+    return noteContent
 
 
 class shortcutsClass:
@@ -873,3 +847,17 @@ class shortcutsClass:
 
             # check if the shortcut address is in the content then replace the key with the value
             ntk_ContMain = ntk_ContMain.replace(shortcutAddress, shortcutValue)
+
+
+class automationClass:
+    def autoLink(self, content):
+        """Automatically creates the hyperlink reference, id attribute, and increments the ntk_headCount variable.
+
+        Args:
+            content (str): This will be set as the hyperlink URL address.
+        """
+        headerClass().makeLink(content)
+        headerClass().makeId(content)
+        # increment the headerCount by 1
+        global ntk_headCount
+        ntk_headCount += 1
