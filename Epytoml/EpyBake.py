@@ -28,18 +28,19 @@ def bakePath(directory):
     # join the directory with the filename
     return directory
 
+
 def ntkBake(fileName, exportTo=None, directory=None):
-    """[summary]
+    """Exports the file to html and pdf fileformat.
 
     Args:
-        fileName ([type]): [description]
-        exportTo ([type], optional): [description]. Defaults to None.
-        directory ([type], optional): [description]. Defaults to None.
+        fileName (str): The file name of the exported file.
+        exportTo (int, optional): Exports the file in html only, or html and pdf. Defaults to Both.
+        directory (str, optional): Specific file directory you want the exported file to be located. Defaults to None.
     """
-    
+
     content = Notaker.ntk_ContWhole
     fileNameType = fileName + ".html"
-    
+
     if directory is None or directory == 0:
         fileNameTypePDF = fileName + ".pdf"
 
