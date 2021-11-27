@@ -9,6 +9,7 @@ Uses python syntax, and exports your Notaker document in html or pdf formats.
 
 from datetime import date as dt
 import re
+import secrets
 
 # REMEMBER: Change version number in ntkGen() function
 # REMEMBER: To add a '\n' at the end of each line that is appended in the ntkTitleHead
@@ -752,13 +753,13 @@ class shortcutsClass:
         """Add a shortcut to the shortcut dictionary
 
         Args:
-            address (str): The address (!, @, $) of the shortcut.
+            address (str): The address (@, $, `!,`@, `$) of the shortcut.
             value (str): The value of the shortcut.
         """
         # adds a shortcut to the shortcut list
         # check if the key provided has an address
 
-        if "!" in address or "@" in address or "$" in address:
+        if "@" in address or "$" in address or "`!" in address or "`@" in address or "`$" in address:
             # key already has an address
             self.shortcutList[self.shortcutCount] = [address, value]
         else:
@@ -841,21 +842,27 @@ class shortcutsClass:
         # and check for any shortcuts, and replace the shortcut address with the value
         global ntk_ContMain
 
-        for key in self.shortcutList:
+        # replace all address symbols (@,$,`!,`@,`$) to "__SHORTCUT__"
+        ID = "__SHORTCUT__"
+
+        updated_ContMain = (
+            ntk_ContMain.replace("$", ID).replace("@", ID).replace("`@", ID).replace("`$", ID)
+        )
+
+        for key in range(1, len(self.shortcutList) + 1):
             # iterate for each key in the shortcut list
 
             # {key: [shortcutAddress, shortcutValue]
-
-            # give the value of the shortcut address to shortcutAddress
-            shortcutAddress = self.shortcutList[key][0]
 
             # give the value of the shortcut value to shortcutValue
             shortcutValue = self.shortcutList[key][1]
 
             # check if the shortcut address is in the content then replace the key with the value
-            addMatchWord = r"\b" + shortcutAddress + r"\b"
+            matchWhole = r"\b" + ID + str(key) + r"\b"
 
-            ntk_ContMain = re.sub(addMatchWord, shortcutValue, ntk_ContMain)
+            final_ntk_ContMain = re.sub(matchWhole, shortcutValue, updated_ContMain)
+            updated_ContMain = final_ntk_ContMain
+            ntk_ContMain = final_ntk_ContMain
 
 
 class automationClass:
