@@ -23,6 +23,7 @@ Contents
 .. toctree::
    Usage
    EpyBake
+   Meaningless
    Notaker
-
+   ShortcutMiner
 

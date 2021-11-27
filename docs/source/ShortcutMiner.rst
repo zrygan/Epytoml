@@ -1,15 +1,15 @@
 ShortcutMiner
-=======
+=============
 
 .. ShortcutMiner:
 
 What is ShortcutMiner?
-----------------
+----------------------
 | ShortcutMiner is a Notaker submodule that is used to get shortcuts from given texts.
 | Shortcuts mined are the words that occur more in the text, with their occurance count more than 1.
 
 Using ShortcutMiner
--------------
+-------------------
 
 | Importing Meaningless
 
