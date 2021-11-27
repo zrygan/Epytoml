@@ -1,43 +1,44 @@
-Notaker
+ShortcutMiner
 =======
 
-.. Notaker:
+.. ShortcutMiner:
 
-What is Notaker?
+What is ShortcutMiner?
 ----------------
-| Notaker is an note-taking formatter for python.
-| Uses python syntax, and exports your Notaker document in html or pdf formats.
+| ShortcutMiner is a Notaker submodule that is used to get shortcuts from given texts.
+| Shortcuts mined are the words that occur more in the text, with their occurance count more than 1.
 
-Using Notaker
+Using ShortcutMiner
 -------------
 
-| First import Notaker in your python file.
-| Also, import EpyBake in your python file.
+| Importing Meaningless
 
 .. code-block:: python
 
     from Epytoml.Notaker import Notaker
-    from Epytoml import EpyBake
+    from Epytoml.Notaker import ShortcutMiner
 
-| Begin all Notaker documents with the following lines.
-
-.. code-block:: python
-
-    Notaker.ntkGen("yourDocumentName")
-
-    Notaker.makeTitle(1:[FirstName, SurName]}, {"month": "monthCreated", "day": "dayCreated", "year": "yearCreated"})
-
-| Remember to end all Notaker documents with the following lines.
+| Importing mined shortcuts to Notaker
 
 .. code-block:: python
 
-    headerClass().toc()
+    text = "foo"
 
-    Notaker.ntkShut()
+    mineDictionary = ShortcutMiner.mineText(text, N)
 
-    EpyBake.bakePath(r"C:\...\yourDocumentFolder")
+    shortcutsClass().mergeShortcut(mineDictionary)
 
-    EpyBake.ntkBake("yourDocumentName", ntk_ContWhole)
 
-Notaker Syntax
---------------
+ShortcutMiner Syntax
+--------------------
+**mineText(content, shortcutCount, address)**::
+    
+    Creats a shortcut dictionary from the given text for Notaker to use.
+
+    Args:
+        content (str): The text to mine shortcuts from.
+        shortcutCount (int): How many shortcuts to mine.
+        address (str): The shortcut address the mined shortcuts will be saved to.
+
+    Returns:
+        The dictionary of the mined shorcuts.

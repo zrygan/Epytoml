@@ -18,8 +18,7 @@ Using EpyBake
     from Epytoml import EpyBake
 
 
-Baking your Epytoml python file
---------------------------------
+| **Baking your Epytoml python file**
 | Use the specific bake function for exporting, in this example a Notaker python file is exported. Therefore, `ntkBake()` is used.
 
 .. code-block:: python
