@@ -3,7 +3,7 @@
 project = "Epytoml"
 copyright = "2021, Z1aaan"
 author = "Z1aaan"
-release = "1.0.2"
+release = "1.1.0"
 
 
 # configuration

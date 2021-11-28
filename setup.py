@@ -10,7 +10,7 @@ AUTHOR_EMAIL = "zheanrobbyganituen@gmail.com"
 URL = "https://github.com/Z1aaan/Epytoml"
 
 LICENSE = "MIT License"
-DESCRIPTION = "A python package that converts plain text into a specified markup language using python."
+DESCRIPTION = "A python library that converts plain text into a specified markup language using python."
 LONG_DESCRIPTION = (HERE / "README.md").read_text()
 LONG_DESC_TYPE = "text/markdown"
 
