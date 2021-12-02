@@ -6,7 +6,7 @@
 [![PyPi](https://img.shields.io/badge/PyPi-PyPi-brightgreen)](https://pypi.org/project/Epytoml/)
 [![MIT License](https://img.shields.io/github/license/Z1aaan/PackCollatzer.svg)](https://github.com/Z1aaan/Epytoml/blob/master/LICENSE.md)
 
-Epytomil (The Epitome of Python to Markup Language), is a python package that converts plain text into a specified markup language using python.
+Epytomil (The Epitome of Python to Markup Language), is a python library that converts plain text into a specified markup language using python.
 
 <h5><details><summary><b>Basic Info<b></summary>
 Created by: Zhean Ganituen <a href="https://github.com/Z1aaan">Z1aaan</a>
@@ -77,6 +77,12 @@ License: <a href="https://github.com/Z1aaan/Epytoml/blob/master/LICENSE.md">MIT 
   > Notaker.ntkShut()
   > EpyBake.ntkBake(FILENAME, Notaker.ntk_ContWhole)
   > ```
+
+## Documentation
+
+[GitHub Pages](https://z1aaan.github.io/Epytoml-Documentation/index.html)
+
+[Docs](https://github.com/Z1aaan/Epytoml/tree/master/docs/source)
 
 ## License
 
