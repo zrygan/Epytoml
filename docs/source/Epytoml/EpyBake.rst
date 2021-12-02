@@ -32,16 +32,6 @@ Using EpyBake
 
 EpyBake Syntax
 ---------------
-
-**bakePath(directory)**::
-    
-    Automatically format the directory to make it python-readable.
-
-    Args:
-        directory (str): The specific directory where you want EpyBake to export the files.
-
-    Returns:
-        The formatted, python-readable directory path.
         
 **ntkBake(fileName, exportTo=None, directory=None)**::
 

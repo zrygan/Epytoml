@@ -7,4 +7,3 @@ from Epytoml.Notaker import ShortcutMiner as mine
 
 
 
-#bk.bakePath
