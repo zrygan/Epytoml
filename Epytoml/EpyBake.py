@@ -36,7 +36,7 @@ def bakePath(directory):
 
 
 def ntkBake(fileName, exportTo=None, directory=None):
-    """Exports the file to html and pdf fileformat.
+    """Exports the file to html and pdf file format.
 
     Args:
         fileName (str): The file name of the exported file.

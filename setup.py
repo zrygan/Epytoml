@@ -1,3 +1,8 @@
+# Remember to change versions in the following files:
+# README.md
+# conf.py (in docs)
+# index.rst [line 16] (in docs)
+
 import pathlib
 from setuptools import setup, find_packages
 
