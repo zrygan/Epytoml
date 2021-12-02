@@ -13,27 +13,6 @@ import pdfkit
 from Epytoml.Notaker import Notaker
 
 
-def bakePath(directory):
-    """Automatically format the directory to make it python-readable.
-
-    Args:
-        directory (str): The specific directory where you want EpyBake to export the files.
-
-    Returns:
-        The formatted, python-readable directory path.
-    """
-    # this function fixes the given directory path of the user
-    finalDirectory = ""
-    # duplicate \ of the directory
-    for char in directory:
-        if char == "\\":
-            finalDirectory += char + char
-        else:
-            finalDirectory += char
-
-    # join the directory with the filename
-    return directory
-
 
 def ntkBake(fileName, exportTo=None, directory=None):
     """Exports the file to html and pdf file format.
