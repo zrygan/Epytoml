@@ -99,4 +99,4 @@ short.readMain()
 ntk.ntkShut()
 
 
-bk.ntkBake(sampleFileName, 1)
+bk.ntkBake(ntk.ntk_ContWhole, "example")
