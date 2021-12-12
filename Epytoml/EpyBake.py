@@ -8,20 +8,19 @@ Used for exporting the Epytoml created files to the supported markup languages o
 """
 
 import os.path as path
-import os
 import pdfkit
-from Epytoml.Notaker import Notaker
+from tkinter import *
 
-def ntkBake(fileName, exportTo=None, directory=None):
+
+def ntkBake(content, fileName, exportTo=None, directory=None):
     """Exports the file to html and pdf file format.
 
     Args:
+        content (str): The content of the Notaker file to be exported.
         fileName (str): The file name of the exported file.
         exportTo (int, optional): Exports the file in html only, or html and pdf. Defaults to Both.
         directory (str, optional): Specific file directory you want the exported file to be located. Defaults to None.
     """
-
-    content = Notaker.ntk_ContWhole
     fileNameType = fileName + ".html"
 
     if directory is None or directory == 0:
@@ -69,5 +68,14 @@ def ntkBake(fileName, exportTo=None, directory=None):
                     f.write(content)
                 pdfkit.from_file(completeFileName, completeFileNamePDF)
 
-def preBake():
-    
+
+def preBake(content):
+    root = Tk()
+
+    root.title("Epytoml - EpyBake - preBake")
+
+    mainDisplay = Label(root, text=content)
+
+    mainDisplay.pack()
+
+    root.mainloop()
