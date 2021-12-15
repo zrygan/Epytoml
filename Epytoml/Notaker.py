@@ -759,7 +759,13 @@ class shortcutsClass:
         # adds a shortcut to the shortcut list
         # check if the key provided has an address
 
-        if "@" in address or "$" in address or "`!" in address or "`@" in address or "`$" in address:
+        if (
+            "@" in address
+            or "$" in address
+            or "`!" in address
+            or "`@" in address
+            or "`$" in address
+        ):
             # key already has an address
             self.shortcutList[self.shortcutCount] = [address, value]
         else:
@@ -846,7 +852,10 @@ class shortcutsClass:
         ID = "__SHORTCUT__"
 
         updated_ContMain = (
-            ntk_ContMain.replace("$", ID).replace("@", ID).replace("`@", ID).replace("`$", ID)
+            ntk_ContMain.replace("$", ID)
+            .replace("@", ID)
+            .replace("`@", ID)
+            .replace("`$", ID)
         )
 
         for key in range(1, len(self.shortcutList) + 1):
@@ -877,3 +886,187 @@ class automationClass:
         # increment the headerCount by 1
         global ntk_headCount
         ntk_headCount += 1
+
+
+class bulletClass:
+    # TODO: Docs
+    # FIXME: remember to change ntk_ContMain to ntk specific ntk_ContMain
+    def bList(list, style=None):
+        # TODO: Docs
+
+        global ntk_ContMain
+
+        # get the length of the list provided
+        bulletCount = len(list)
+
+        # list converted into html bullet list
+        bulletList = ""
+
+        # iterate through the list
+        for word in range(bulletCount):
+            global ntk_ContMain
+            bulletList += "<li>" + list[word] + "</li>"
+
+        # check if margin is none
+        if style is None:
+            # if margin is none, return and append the list as is.
+            ntk_ContMain += bulletList
+        else:
+            # make style upper case
+            style = style.upper()
+
+            if (
+                style == "ORDERED"
+                or style == "ORDEREDLIST"
+                or style == "OL"
+                or style == "O"
+            ):
+                # if margin is not none
+                # return and append the list with <ol> and </ol> tags
+                withTags = "<ol>" + bulletList + "</ol>"
+                bulletList = withTags
+            elif (
+                style == "UNORDERED"
+                or style == "UNORDEREDLIST"
+                or style == "UL"
+                or style == "U"
+            ):
+                # if margin is not none
+                # return and append the list with <ul> and </ul> tags
+                withTags = "<ul>" + bulletList + "</ul>"
+                bulletList = withTags
+            else:
+                # if input not found use default or None
+                ntk_ContMain += bulletList
+
+        return bulletList
+
+    def dList(list, style=None):
+        # TODO: Docs
+
+        global ntk_ContMain
+
+        # get the length of the list provided
+        descCount = len(list)
+
+        # final ntk_ContMain
+        descList = ""
+
+        # iterate through the list
+        for word in range(0, descCount, 2):
+            # the first word is the description term.
+            descList += "<dt>" + list[word] + "</dt>"
+            # the second word is the description definition.
+            if style is None:
+                # use normal format
+                descList += "<dd>" + list[word + 1] + "</dd>"
+            else:
+                # make style upper case
+                style = style.upper()
+                if style == "DOT" or style == "B":
+                    # use bullet format with &bull
+                    descList += "<dd>&bull; " + list[word + 1] + "</dd>"
+                elif style == "DASH" or style == "-":
+                    # use bullet format with -
+                    descList += "<dd>- " + list[word + 1] + "</dd>"
+                else:
+                    # custom formats
+                    if "::" in style:
+                        # use custom format provided
+                        customFormat = re.sub("::", "", style)
+                        beginTag = "<dd>" + customFormat + " "
+                        descList += beginTag + list[word + 1] + "</dd>"
+                    else:
+                        # use default format or None
+                        # use normal format
+                        descList += "<dd>" + list[word + 1] + "</dd>"
+
+        ntk_ContMain += descList
+
+        return descList
+
+    def B(text):
+        # TODO: Docs
+
+        global ntk_ContMain
+
+        bullOutput = "<li>" + text + "</li>"
+
+        ntk_ContMain += bullOutput
+
+        return bullOutput
+
+    def inO(text):
+        # TODO: Docs
+
+        global ntk_ContMain
+
+        # append ordered list tags to the start and end of text
+        inOOutput = "<ol>" + text + "</ol>"
+
+        ntk_ContMain += inOOutput
+
+        return inOOutput
+
+    def inU(text):
+        # TODO: Docs
+
+        global ntk_ContMain
+
+        # append unordered list tags to the start and end of text
+        inUOutput = "<ul>" + text + "</ul>"
+
+        ntk_ContMain += inUOutput
+
+        return inUOutput
+
+    def oStart():
+        # TODO: Docs
+
+        global ntk_ContMain
+
+        # begin an ordered list tag (but do not close it)
+
+        oStartOutput = "<ol>"
+
+        ntk_ContMain += oStartOutput
+
+        return oStartOutput
+
+    def oEnd():
+        # TODO: Docs
+
+        global ntk_ContMain
+
+        # end an ordered list tag
+
+        oEndOutput = "</ol>"
+
+        ntk_ContMain += oEndOutput
+
+        return oEndOutput
+
+    def uStart():
+        # TODO: Docs
+
+        global ntk_ContMain
+
+        # begin an unordered list tag (but do not close it)
+
+        uStartOutput = "<ul>"
+
+        ntk_ContMain += uStartOutput
+
+        return uStartOutput
+
+    def uEnd():
+        # TODO: Docs
+
+        global ntk_ContMain
+
+        # end an unordered list tag
+        uEndOutput = "</ul>"
+
+        ntk_ContMain += uEndOutput
+
+        return uEndOutput
