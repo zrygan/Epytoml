@@ -10,7 +10,7 @@ Used for exporting the Epytoml created files to the supported markup languages o
 import os.path as path
 import os
 import pdfkit
-from tkinter import *
+import tkinter as tk
 from tkPDFViewer import tkPDFViewer
 from Epytoml import Notaker as ntk
 
@@ -72,109 +72,56 @@ def ntkBake(fileName, exportTo=None, directory=None):
                 pdfkit.from_file(completeFileName, completeFileNamePDF)
 
 
-class preBakeClass:
-    # TODO: Docstring
+def preBake():
+    def makeGUI():
+        # title of the preBake window
+        global root
+        root = tk.Tk()
 
-    # TODO: Implement the reBake function show in the new window the updated Notaker file
-    def reBake():
-        # TODO: Docstrings
-        # FIXME: remember to add "This function should not be executed or used. This function is used in the preBake GUI."
-        # update the pdf file viewed to the updated (if updates are made) notaker file
+        root.title("Epytoml - EpyBake - preBake: Notaker")
+        
 
-        # get the user input in the entry widget
-        fileToOpen = inputWidget.get()
+        # contents of the GUI
+        # render pdf file in the tkinter GUI
+        pdfFile = tkPDFViewer.ShowPdf().pdf_view(
+            root, pdf_location=bakeFile, bar=False, width=75, height=50
+        )
+        pdfFile.grid(row=6, column=0, columnspan=10, rowspan=10)
 
-        try:
-            # try to open the file
-            with open(fileToOpen, "r") as f:
-                content = f.read()
-        except:
-            # if file not found (FileNotFoundError), print error message.
-            FileNotFoundError
-            errorMessage = "Error [EpyBake 1], FileNotFoundError: File not found, please check filename and make sure the file is in the same directory as this file."
-            print(errorMessage)
+        root.mainloop()
 
-            # print an error message in the new window
-
-            showErrorMessage = True
-
-        # Create a new window
-        newRoot = Tk()
-        # title of the reBake window
-        newRoot.title("Epytoml - EpyBake - reBake")
-
-        if showErrorMessage == True:
-            # create a label widget
-            errorLabel = Label(newRoot, text=errorMessage)
-            # pack the label widget
-            errorLabel.grid(row=0, column=0)
-
-    def preBake(self):
-        # TODO: Docstring
+    def makeFile():
         # export the file into html, then pdf, then delete the html file
         # create both html and pdf files
 
-        content = ntk.ntk_ContWhole
-        with open("preBake_Notaker.html", "w") as f:
-            f.write(content)
-        pdfkit.from_file("preBake_Notaker.html", "preBake_Notaker.pdf")
+        # write an html file with the content of the notaker file
 
-        # once pdf is exported delete html file
-        os.remove("preBake_Notaker.html")
+        filename_html = bakeFile + ".html"
+        filename_pdf = bakeFile + ".pdf"
 
-        # make use of tkinter for the GUI
-        global root
-        root = Tk()
+        with open(filename_html, "w") as f:
+            f.write(file)
 
-        # title of the window
-        root.title("Epytoml - EpyBake - preBake")
+        # convert the created html file into a pdf file
+        pdfkit.from_file(filename_html, filename_pdf)
 
-        # reBake button
-        global inputWidget
-        inputWidget = Entry(root, text="Input .pdf to view", width=15, borderwidth=3)
-        # make a button that executes the reBake function on click
-        reBakeButton = Button(
-            root,
-            text="Rebake",
-            command=preBakeClass.reBake,
-            width=8,
-            height=5,
-            borderwidth=2,
-        )
+        # delete the created html file
+        os.remove(filename_html)
+        
+    # store the filename of the notaker file created or the pdf file to be read
+    global filename
+    bakeFile = ""
 
-        buttonEntrySpacing = Label(root, text="     ")
+    file = ntk.ntk_ContWhole
+    bakeFile = "preBake_Notaker"
 
-        inputWidget.grid(row=0, column=0)
-        buttonEntrySpacing.grid(row=0, column=1)
-        reBakeButton.grid(row=0, column=2)
+    # run the makeFile function
+    makeFile()
 
-        # line break
-        # line1 = Label(root, text="|")
-        # line2 = Label(root, text="|")
-        # line3 = Label(root, text="|")
-        # line4 = Label(root, text="|")
-        # line5 = Label(root, text="|")
-        # line6 = Label(root, text="|")
-        # line7 = Label(root, text="|")
-        # line8 = Label(root, text="|")
-        # line9 = Label(root, text="|")
-        # line10 = Label(root, text="|")
+    bakeFile = bakeFile + ".pdf"
 
-        # line1.grid(row=0, column=1)
-        # line2.grid(row=1, column=1)
-        # line3.grid(row=2, column=1)
-        # line4.grid(row=3, column=1)
-        # line5.grid(row=4, column=1)
-        # line6.grid(row=5, column=1)
-        # line7.grid(row=6, column=1)
-        # line8.grid(row=7, column=1)
-        # line9.grid(row=8, column=1)
-        # line10.grid(row=9, column=1)
+    # run the makeGUI function
+    makeGUI()
 
-        # render pdf file in the tkinter GUI
-        pdfFile = tkPDFViewer.ShowPdf().pdf_view(
-            root, pdf_location=r"preBake_Notaker.pdf", bar=False, width=75, height=50
-        )
-        pdfFile.grid(row=0, column=4, columnspan=10, rowspan=10)
-
-        root.mainloop()
+    # then once the GUI is closed, delete the created pdf file.
+    os.remove(bakeFile)
