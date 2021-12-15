@@ -42,5 +42,11 @@ EpyBake Syntax
         exportTo (int, optional): Exports the file in html only, or html and pdf. Defaults to Both.
         directory (str, optional): Specific file directory you want the exported file to be located. Defaults to None.
 
+**preBake(filetype)**::
+
+    Display the current output of the Epytoml file.
+
+    Args:
+        filetype (str): Specify what Epytoml file type is used.
 
 

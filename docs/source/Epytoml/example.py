@@ -98,5 +98,4 @@ short.readMain()
 
 ntk.ntkShut()
 
-
 bk.ntkBake(ntk.ntk_ContWhole, "example")
