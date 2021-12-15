@@ -12,6 +12,7 @@ import os
 import pdfkit
 from tkinter import *
 from tkPDFViewer import tkPDFViewer
+from Epytoml import Notaker as ntk
 
 
 def ntkBake(content, fileName, exportTo=None, directory=None):
@@ -106,10 +107,12 @@ class preBakeClass:
             # pack the label widget
             errorLabel.grid(row=0, column=0)
 
-    def preBake(self, content):
+    def preBake(self):
         # TODO: Docstring
         # export the file into html, then pdf, then delete the html file
         # create both html and pdf files
+
+        content = ntk.ntk_ContWhole
         with open("preBake_Notaker.html", "w") as f:
             f.write(content)
         pdfkit.from_file("preBake_Notaker.html", "preBake_Notaker.pdf")
