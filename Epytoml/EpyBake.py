@@ -15,15 +15,15 @@ from tkPDFViewer import tkPDFViewer
 from Epytoml import Notaker as ntk
 
 
-def ntkBake(content, fileName, exportTo=None, directory=None):
+def ntkBake(fileName, exportTo=None, directory=None):
     """Exports the file to html and pdf file format.
 
     Args:
-        content (str): The content of the Notaker file to be exported.
         fileName (str): The file name of the exported file.
         exportTo (int, optional): Exports the file in html only, or html and pdf. Defaults to Both.
         directory (str, optional): Specific file directory you want the exported file to be located. Defaults to None.
     """
+    content = ntk.ntk_ContWhole
     fileNameType = fileName + ".html"
 
     if directory is None or directory == 0:
@@ -77,6 +77,8 @@ class preBakeClass:
 
     # TODO: Implement the reBake function show in the new window the updated Notaker file
     def reBake():
+        # TODO: Docstrings
+        # FIXME: remember to add "This function should not be executed or used. This function is used in the preBake GUI."
         # update the pdf file viewed to the updated (if updates are made) notaker file
 
         # get the user input in the entry widget
