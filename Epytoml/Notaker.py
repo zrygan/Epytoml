@@ -890,7 +890,7 @@ class automationClass:
 
 class bulletClass:
     # TODO: Docs
-    # FIXME: remember to change ntk_ContMain to ntk specific ntk_ContMain
+    # TODO: Update Epytoml project to use this class
     def bList(list, style=None):
         # TODO: Docs
 
