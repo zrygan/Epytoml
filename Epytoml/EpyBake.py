@@ -72,14 +72,19 @@ def ntkBake(fileName, exportTo=None, directory=None):
                 pdfkit.from_file(completeFileName, completeFileNamePDF)
 
 
-def preBake():
+def preBake(filetype):
+    """Display the current output of the Epytoml file.
+
+    Args:
+        filetype (str): Specify what Epytoml file type is used.
+    """
+
     def makeGUI():
         # title of the preBake window
         global root
         root = tk.Tk()
 
-        root.title("Epytoml - EpyBake - preBake: Notaker")
-        
+        root.title("Epytoml - EpyBake - preBake")
 
         # contents of the GUI
         # render pdf file in the tkinter GUI
@@ -107,13 +112,17 @@ def preBake():
 
         # delete the created html file
         os.remove(filename_html)
-        
+
     # store the filename of the notaker file created or the pdf file to be read
     global filename
     bakeFile = ""
 
-    file = ntk.ntk_ContWhole
-    bakeFile = "preBake_Notaker"
+    filetype = filetype.upper()
+    
+    if filetype == "NOTAKER" or "NTK":
+        file = ntk.ntk_ContWhole
+        bakeFile = "preBake_Notaker"
+    
 
     # run the makeFile function
     makeFile()
