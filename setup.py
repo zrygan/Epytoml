@@ -19,10 +19,7 @@ DESCRIPTION = "A python library that converts plain text into a specified markup
 LONG_DESCRIPTION = (HERE / "README.md").read_text()
 LONG_DESC_TYPE = "text/markdown"
 
-INSTALL_REQUIRES = [
-    "pdfkit",
-    "lorem",
-]
+INSTALL_REQUIRES = ["pdfkit", "lorem", "PyPDF2", "tkPDFViewer"]
 
 setup(
     name=PACKAGE_NAME,
