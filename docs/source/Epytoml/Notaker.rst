@@ -54,13 +54,6 @@ Notaker Syntax
     Args:
         lines (int): Specifies how many line breaks are to be created, if lines is not given a value, this function will only create one line.
 
-**nl(lines=None)**::
-
-    Creates one or multiple line breaks.
-    
-    Args:
-        lines (int): Specifies how many line breaks are to be created, if lines is not given a value, this function will only create one line.
-
 **headerClass**::
 
     Contains all the functions needed in creating main headers (h1), creating hyperlinks and hyperlink ids, and adding the table of contents.
