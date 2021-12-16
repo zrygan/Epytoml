@@ -22,6 +22,7 @@ LONG_DESC_TYPE = "text/markdown"
 
 INSTALL_REQUIRES = ["pdfkit", "tkDocViewer", "tkPDFViewer", "PyPDF2", "lorem"]
 
+
 setup(
     name=PACKAGE_NAME,
     version=VERSION,
