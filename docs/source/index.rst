@@ -13,9 +13,9 @@ Epytoml is a python package that converts plain text into a specified markup lan
 .. note::
    This project is underdevelopment, though it is stable and usable. 
 
-Current Version: `1.1.0`
+Current Version: `1.2.0`
 
-.. toctree::
+.. toct
    :maxdepth: 2
    :caption: Contents:
 

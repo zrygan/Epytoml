@@ -13,7 +13,7 @@ Created by: Zhean Ganituen <a href="https://github.com/Z1aaan">Z1aaan</a>
 
 Last Updated: November 28, 2021
 
-Latest Release Version: 1.1.0
+Latest Release Version: 1.2.0
 
 GitHub Repo: <a href="https://github.com/Z1aaan/Epytoml">GitHub Repository</a>
 
