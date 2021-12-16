@@ -15,7 +15,7 @@ Using Notaker
 
 .. code-block:: python
 
-    from Epytoml.Notaker import Notaker
+    from Epytoml import Notaker
 
 | Begin all Notaker documents with the following lines.
 

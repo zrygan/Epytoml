@@ -12,10 +12,14 @@ First download Epytoml using pip install.
 
     $ pip install Epytoml
 
-Then run the following commands to download the required dependencies using pip install.
+Importing
+---------
 
-.. code-block:: console
+The basic format for importing Epytoml modules is as follows:
 
-    $ cd: /path/to/Epytoml
+.. code-block:: python
 
-    $ pip install -r requirements.txt
+    [1] from Epytoml import foo
+
+For a more specific explanation on how to import the Epytoml module you wish to use.
+Go to their corresponding documentation page.

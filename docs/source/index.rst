@@ -28,4 +28,5 @@ Contents
    Epytoml/Meaningless
    Epytoml/Notaker
    Epytoml/ShortcutMiner
+   Epytoml/getting_started/getting_started
 

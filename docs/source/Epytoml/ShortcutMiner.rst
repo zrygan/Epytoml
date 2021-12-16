@@ -6,17 +6,17 @@ ShortcutMiner
 What is ShortcutMiner?
 ----------------------
 | ShortcutMiner is an Epytoml submodule that is used to get shortcuts from given texts.
-| Shortcuts mined are the words that occur more in the text, with their occurance count more than 1.
+| Shortcuts mined are the words that occur more in the text, with their occurrence count more than 1.
 
 Using ShortcutMiner
 -------------------
 
-| Importing Meaningless
+| Importing ShortcutMiner
 
 .. code-block:: python
 
-    from Epytoml.Notaker import Notaker
-    from Epytoml.Notaker import ShortcutMiner
+    from Epytoml import Notaker
+    from Epytoml import ShortcutMiner
 
 | Importing mined shortcuts to Notaker
 
