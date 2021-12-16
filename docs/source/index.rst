@@ -26,6 +26,6 @@ Contents
    Usage
    Epytoml/EpyBake
    Epytoml/Meaningless
-   Epytoml/Notaker/Notaker
-   Epytoml/Notaker/ShortcutMiner
+   Epytoml/Notaker
+   Epytoml/ShortcutMiner
 
