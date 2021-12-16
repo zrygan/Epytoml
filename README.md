@@ -11,9 +11,9 @@ Epytomil (The Epitome of Python to Markup Language), is a python library that co
 <h5><details><summary><b>Basic Info<b></summary>
 Created by: Zhean Ganituen <a href="https://github.com/Z1aaan">Z1aaan</a>
 
-Last Updated: November 28, 2021
+Last Updated: December 16, 2021
 
-Latest Release Version: 1.2.0
+Latest Release Version: 1.2.1
 
 GitHub Repo: <a href="https://github.com/Z1aaan/Epytoml">GitHub Repository</a>
 

@@ -1,14 +1,15 @@
 # Remember to change versions in the following files:
 # README.md
+# remember to change the last updated date on release [14] (in README.md)
 # conf.py (in docs)
-# index.rst [line 16] (in docs)
+# index.rst [16] (in docs)
 
 import pathlib
 from setuptools import setup, find_packages
 
 HERE = pathlib.Path(__file__).parent
 
-VERSION = "1.2.0"
+VERSION = "1.2.1"
 PACKAGE_NAME = "Epytoml"
 AUTHOR = "Zhean Robby Ganituen"
 AUTHOR_EMAIL = "zheanrobbyganituen@gmail.com"
