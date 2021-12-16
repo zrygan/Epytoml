@@ -1,6 +1,6 @@
 """
 EpyBake
-An Epytomil module
+An Epytoml module
 Created by: Zhean 'Z1aaan' Ganituen
 
 EpyBake is one of the most important modules of Epytoml.

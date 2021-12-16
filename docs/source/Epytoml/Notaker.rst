@@ -211,8 +211,8 @@ Notaker Syntax
 
 **lightUp(content, textColor=None, highlightColor=None)**::
 
-    Highlights text
-    
+    Highlights text.
+
     Args:
         content (str): This is the text displayed with highlight.
         textColor (str, optional): Specifies the font color. Defaults to black.
@@ -220,16 +220,15 @@ Notaker Syntax
 
 **note(content, borderColor=None, textColor=None, autoHide=None, summaryText=None)**::
 
-    Creates a blockquote
-    
+    Creates a blockquote.
+
     Args:
-    
         content (str): This is the text displayed in the highlighted text block.
         borderColor (str, optional): Specified the blockquote left border color. Defaults to red.
         textColor (str, optional): Specifies the font color. Defaults to black.
         autoHide (bool, optional): Wraps the blockquote in a togglable show and hide switch. Defaults to False.
         summaryText (str, optional): This is the text displayed when the blockquote toggle is set to hide. Defaults to 'Notes:' .
-    
+
     Returns:
         This returns the complete (formatted) note in html format.
 
@@ -239,11 +238,11 @@ Notaker Syntax
 
 **shortcutsClass().addShortcut(self, address, value)**::
 
-    Add a shortcut to the shortcut dictionary
-    
-    Args:
-        address (str): The address (@, $, `!,`@, `$) of the shortcut.
-        value (str): The value of the shortcut.
+    Add a shortcut to the shortcut dictionary.
+
+        Args:
+            address (str): The address (@, $, `!,`@, `$) of the shortcut.
+            value (str): The value of the shortcut.
 
 **shortcutsClass().mergeShortcut(self, dictionary)**::
 
@@ -281,7 +280,7 @@ Notaker Syntax
 
 **automationClass**::
     
-    Automatically creates the hyperlink reference, id attribute, and increments the ntk_headCount variable.
+    Contains all the function needed for Notaker automations.
 
 **automationClass().autoLink(self, content)**::
     
@@ -289,3 +288,88 @@ Notaker Syntax
     
     Args:
         content (str): This will be set as the hyperlink URL address.
+
+**bulletClass**::
+
+    Contains all the function needed for Notaker bullet points.
+
+**bulletClass.bList(list, style=None)**::
+    
+    Convert a list into an ordered or unordered list.
+
+        Args:
+            list (list): The list to be converted into an ordered or unordered list.
+            style (str, optional): Specify if the list is an ordered or unordered list. Defaults to Unordered.
+
+        Returns:
+            The converted list.
+
+**bulletClass.dList(list, style=None)**::
+    
+    Convert a list into a definition list.
+
+        Args:
+            list (list): The list to be converted into a definition list.
+            style (str, optional): The bullet point the description. Defaults to None.
+
+        Returns:
+            The converted list.
+
+**bulletClass.B(text)**::
+    
+    Bullet a text.
+
+        Args:
+            text (str): The text that will be given a bullet.
+
+        Returns:
+            The text with a bullet
+
+**bulletClass.inO(text)**::
+    
+    Append ordered list tags on the beginning and end of inputted text.
+
+        Args:
+            text (str): The text where the ordered list tags will be concatenated.
+
+        Returns:
+            Text with the ordered list tags concatenated.
+
+**bulletClass.inU(text)**::
+    
+    Append unordered list tags on the beginning and end of inputted text.
+
+        Args:
+            text (str): The text where the unordered list tags will be concatenated.
+
+        Returns:
+            Text with the unordered list tags concatenated.
+        
+
+**bulletClass.oStart()**::
+    
+    Begin an ordered list tag that does not automatically close.
+
+        Returns:
+            Ordered list tag.
+
+**bulletClass.oEnd()**::
+    
+    End an opened ordered list tag.
+
+        Returns:
+            Ordered list closing tag.
+
+**bulletClass.uStart()**::
+    
+    Begin an unordered list tag that does not automatically close.
+
+        Returns:
+            Unordered list tag.
+
+**bulletClass.uEnd()**::
+    
+    End an opened unordered list tag.
+
+        Returns:
+            Unordered list closing tag.

@@ -1,6 +1,6 @@
 """
 Meaningless
-An Epytomil module
+An Epytoml module
 Created by: Zhean 'Z1aaan' Ganituen
 
 Meaningless is a dummy text generator for Epytoml and it's modules.
