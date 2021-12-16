@@ -1,3 +1,5 @@
 pdfkit==1.0.0
-lorem==0.1.1
+tkDocViewer==2.0.2
+tkPDFViewer==0.1
 PyPDF2==1.26.0
+lorem==0.1.1

@@ -9,7 +9,7 @@ from setuptools import setup, find_packages
 
 HERE = pathlib.Path(__file__).parent
 
-VERSION = "1.2.1"
+VERSION = "1.2.1.1"
 PACKAGE_NAME = "Epytoml"
 AUTHOR = "Zhean Robby Ganituen"
 AUTHOR_EMAIL = "zheanrobbyganituen@gmail.com"
@@ -20,10 +20,7 @@ DESCRIPTION = "A python library that converts plain text into a specified markup
 LONG_DESCRIPTION = (HERE / "README.md").read_text()
 LONG_DESC_TYPE = "text/markdown"
 
-INSTALL_REQUIRES = [
-    "pdfkit",
-    "lorem",
-]
+INSTALL_REQUIRES = ["pdfkit", "tkDocViewer", "tkPDFViewer", "PyPDF2", "lorem"]
 
 setup(
     name=PACKAGE_NAME,

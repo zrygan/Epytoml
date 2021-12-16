@@ -10,7 +10,7 @@ The Epitome of Python to Markup Language
 
 Epytoml is a python package that converts plain text into a specified markup language using python. 
  
-Current Version: `1.2.1`
+Current Version: `1.2.1.1`
 
 .. toct
    :maxdepth: 2
