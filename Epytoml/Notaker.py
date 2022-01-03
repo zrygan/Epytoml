@@ -400,6 +400,43 @@ def t(content, emphasis=None):
     return ntkP
 
 
+def T(content, emphasis=None):
+    """Creates normal text and a new line at the top and bottom in the Notaker document.
+
+    Args:
+        content (str): This is the text the tL function will display.
+        emphasis (str, optional): Adds text emphasis to the content. Defaults to None.
+
+    Returns:
+        This returns the complete (formatted) text in html format.
+    """
+    # write text to the main body of the Notaker file
+    # textL inserts a <br> at the end of the text
+
+    if emphasis is None:
+        # default text when there are no emphasis tags specified
+        ntkP = "<br><p>" + content + "</p><br>\n"
+    else:
+        emphasis = emphasis.lower()
+        if emphasis == "b" or emphasis == "bold" or emphasis == "1":
+            # bold text
+            ntkP = "<br><p><b>" + content + "</b></p><br>\n"
+        elif emphasis == "i" or emphasis == "italic" or emphasis == "2":
+            # italic text
+            ntkP = "<br><p><i>" + content + "</i></p><br>\n"
+        elif emphasis == "u" or emphasis == "underline" or emphasis == "3":
+            # underline text
+            ntkP = "<br><p><u>" + content + "</u></p><br>\n"
+        else:
+            # if input not found then set to default
+            ntkP = "<br><p>" + content + "</p><br>\n"
+
+    global ntk_ContMain
+    ntk_ContMain += ntkP
+
+    return ntkP
+
+
 def tL(content, emphasis=None):
     """Creates normal text and a new line at the bottom in the Notaker document.
 
@@ -430,6 +467,43 @@ def tL(content, emphasis=None):
         else:
             # if input not found then set to default
             ntkP = "<p>" + content + "</p><br>\n"
+
+    global ntk_ContMain
+    ntk_ContMain += ntkP
+
+    return ntkP
+
+
+def tB(content, emphasis=None):
+    """Creates normal text and a new line at the top in the Notaker document.
+
+    Args:
+        content (str): This is the text the tL function will display.
+        emphasis (str, optional): Adds text emphasis to the content. Defaults to None.
+
+    Returns:
+        This returns the complete (formatted) text in html format.
+    """
+    # write text to the main body of the Notaker file
+    # textL inserts a <br> at the end of the text
+
+    if emphasis is None:
+        # default text when there are no emphasis tags specified
+        ntkP = "<br><p>" + content + "</p>\n"
+    else:
+        emphasis = emphasis.lower()
+        if emphasis == "b" or emphasis == "bold" or emphasis == "1":
+            # bold text
+            ntkP = "<br><p><b>" + content + "</b></p>\n"
+        elif emphasis == "i" or emphasis == "italic" or emphasis == "2":
+            # italic text
+            ntkP = "<br><p><i>" + content + "</i></p>\n"
+        elif emphasis == "u" or emphasis == "underline" or emphasis == "3":
+            # underline text
+            ntkP = "<br><p><u>" + content + "</u></p>\n"
+        else:
+            # if input not found then set to default
+            ntkP = "<br><p>" + content + "</p>\n"
 
     global ntk_ContMain
     ntk_ContMain += ntkP
