@@ -9,17 +9,17 @@
 Epytomil (The Epitome of Python to Markup Language), is a python library that converts plain text into a specified markup language using python.
 
 <h5><details><summary><b>Basic Info<b></summary>
-Created by: Zhean Ganituen <a href="https://github.com/Z1aaan">Z1aaan</a>
+Created by: Zhean Ganituen <a href="https://github.com/zrygan">zrygan</a>
 
 Last Updated: December 17, 2021
 
 Latest Release Version: 1.2.1.1
 
-GitHub Repo: <a href="https://github.com/Z1aaan/Epytoml">GitHub Repository</a>
+GitHub Repo: <a href="https://github.com/zrygan/Epytoml">GitHub Repository</a>
 
 Python Package Index: <a href="https://pypi.org/project/Epytoml/">PyPi</a>
 
-License: <a href="https://github.com/Z1aaan/Epytoml/blob/master/LICENSE.md">MIT License</a>
+License: <a href="https://github.com/zrygan/Epytoml/blob/master/LICENSE.md">MIT License</a>
 
 </details>
 </h5>
